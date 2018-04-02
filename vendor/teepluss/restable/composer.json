@@ -1,0 +1,26 @@
+{
+    "name": "teepluss/restable",
+    "description": "Laravel RESTful API format",
+    "keywords": ["laravel", "laravel", "restful", "api"],
+    "homepage": "https://github.com/teepluss/laravel-restable",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Teepluss",
+            "email": "admin@laravel.in.th"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "illuminate/support": ">=5.0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Teepluss\\Restable\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}

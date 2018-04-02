@@ -1,0 +1,167 @@
+@charset "utf-8";
+
+*,*:before,*:after {-webkit-box-sizing:border-box;box-sizing:border-box;}
+/*-- fixclear --*/
+.fix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.fix{display:inline-block;}
+* html .fix{height:1%;}
+.fix{display:block;}
+a, input, img{vertical-align:middle;border:0;outline:none;}
+.conter{width:100%;background-color:#fff;position:relative;}
+.e_bg{width:100%;position:absolute;z-index:1;background:url(bg_12.jpg) no-repeat center bottom;padding-bottom:50px;}
+.e_bg div{height:50px;}
+.bg01{background:url(bg_01.jpg) no-repeat center;}
+.bg02{background:url(bg_02.jpg) no-repeat center;}
+.bg03{background:url(bg_03.jpg) no-repeat center;}
+.bg04{background:url(bg_04.jpg) no-repeat center;}
+.bg05{background:url(bg_05.jpg) no-repeat center;}
+.bg06{background:url(bg_06.jpg) no-repeat center;}
+.bg07{background:url(bg_07.jpg) no-repeat center;}
+.bg08{background:url(bg_08.jpg) no-repeat center;}
+.bg09{background:url(bg_09.jpg) no-repeat center;}
+.bg10{background:url(bg_10.jpg) no-repeat center;}
+.bg11{background:url(bg_11.jpg) no-repeat center;}
+.main{width:1000px;margin:0 auto;position:relative;z-index:2;}
+.e_top{height:160px;background:url(top_bg.png) no-repeat bottom;}
+.e_time{width:150px;height:100px;background:url(time_bg.png) no-repeat center bottom;float:right;margin-right:14px;}
+.e_timeBg{background-color:#cb1e2b;padding:18px 0 18px 8px;}
+.e_timeBg p{color:#fff;font-size:16px;}
+.mid{background-color:#f4f4f4;}
+.e_nav{overflow:hidden;height:38px;background:url(head.png) repeat-x 0 0\9;background:linear-gradient(#ba0b0b,#890606);}
+.e_nav ul{margin-left:-2px;}
+.e_nav ul li{width:114px;float:left;text-align:center;border-left:1px solid #7c0606;}
+.e_nav li a{display:block;font-size:16px;color:#fff;line-height:38px;border-left:1px solid #df4646;}
+.e_nav li a:hover,.e_nav li.on a{background:linear-gradient(#ee4949,#c81010);*background-color:#ee4949;background-color:#ee4949\9;}
+.e_nav .right{float:right;width:80px;padding-top:8px;border:none;margin-right:7px;}
+.e_nav .right a{
+    border-radius: 3px;
+    background: #fff;
+    border: 1px solid #fff;
+    display: block;
+    height: 20px;
+    font-size: 12px;
+    line-height: 20px;
+    color:#333;
+
+}
+.e_nav .right a:hover{
+    color:#df4646;
+    background:#fff;
+}
+.e_nav .noborderLeft{border-left:none;}
+.e_cont{padding:10px 10px 0 10px;margin-bottom:10px;position:relative;}
+.e_cont h3{height:41px;font-size:14px;cursor:pointer;line-height:38px;color:#c10d0c;background:url(title_bg.png) repeat-x 0 0;}
+.e_cont h3 strong{width:30px;display:inline-block;text-align:center;font-size:18px;line-height:36px;vertical-align:bottom;}
+/* .e_cont h3 span{display:inline-block;font-weight:normal;} */
+.e_cont h3 hr{width:100%;height:3px;background-color:#cdcdcd;border-top:1px solid #ededed;border-bottom:1px solid #ededed;}
+.e_line{border:1px solid #cdcdcd;margin-bottom:10px;}
+.contList{width:700px;position:absolute;top:10px;left:11px;border-top:1px solid #cdcdcd;background:url(title_bg.png) repeat-x 0 0;}
+.contList h3{height:38px;padding-right:10px;}
+.contList h3 b{width:10px;height:7px;background:url(sanjiao.png) no-repeat center;margin:0 10px;display:inline-block;}
+.contList ul li{float:left;border-right:1px solid #cdcdcd;}
+.contList ul li.on h3{background:#fff;}
+.e_contLeft{float:left;padding-top:37px;}
+.e_contLeft .e_line{border-top:none;}
+.e_contLeft hr{width:100%;background-color:#cdcdcd;border-top:1px solid #ededed;border-bottom:1px solid #ededed;height:3px;}
+.e_single,.e_compared{width:700px;overflow:hidden;}
+.e_inter{padding:10px;background-color:#fff;}
+.e_options{background-color:#fafafa;position:relative;}
+.e_options hr{width:2px;height:100%;background-color:#fff;position:absolute;top:0;left:50%;margin-left:-1px;}
+.e_options dl dt{width:100%;background-color:#c8ddf1;}
+.e_options dl dt{width:680px;}
+.e_options dl dt ul li{width:64px;height:38px;font-size:14px;color:#454545;line-height:38px;float:left;text-align:center;}
+.e_compared dl dt ul li{width:66px;}
+.e_single dl dt ul li.first{width:80px;}
+.e_compared dl dt ul li.first{width:42px;text-align:right;}
+.e_compared dl dt ul li.strw{width:98px;text-indent:12px;}
+.e_options dl dd{width:50%;height:40px;float:left;font-size:12px;line-height:40px;color:#676767;}
+.e_options dl dd a b,.e_options dl dd a span,.e_options dl dd a i{width:63px;float:left;text-align:center;color:#676767;}
+.e_options dl dd a:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.e_options dl dd a{display:inline-block;}
+* html .e_options dl dd a{height:1%;}
+.e_options dl dd a{display:block;}
+.e_options dl dd a:hover,.e_options dl dd.gray a:hover{color:#676767;background-color:#edf0d1;}
+.e_options dl dd.gray a{background-color:#f1f1f1;}
+.e_options dl dd a.on,.e_options dl dd a.on:hover{background-color:#f3cf61;}
+.e_single dl dd a b{width:48px;padding-left:26px;}
+.e_compared dl dd a b{width:40px;padding-left:10px;}
+.e_options dl dd i{color@{{=it[i].h_cn}}:#2d7bc0;font-style:normal;}
+.e_single dl dd .country{width:96px;color:#353535;padding-left:24px;background:url(country.png) no-repeat 0 0;}
+.e_single dl dd .country.PFR{background-position:0 0;}               /* 法国 */
+.e_single dl dd .country.PUA{background-position:-100px -160px;}     /* 乌克兰 */
+.e_single dl dd .country.PAL{background-position:0 -40px;}           /* 阿尔巴尼亚 */
+.e_single dl dd .country.PPL{background-position:-100px -200px;}     /* 波兰 */
+.e_single dl dd .country.PDE{background-position:0 -80px;}           /* 德国 */
+.e_single dl dd .country.PSE{background-position:-100px -240px;}     /* 瑞典 */
+.e_single dl dd .country.PES{background-position:0 -120px;}          /* 西班牙 */
+.e_single dl dd .country.PCZ{background-position:-100px -280px;}     /* 捷克 */
+.e_single dl dd .country.PBE{background-position:0 -160px;}          /* 比利时 */
+.e_single dl dd .country.PTR{background-position:-200px 0;}          /* 土耳其 */
+.e_single dl dd .country.PEN{background-position:0 -200px;}         /* 英格兰 */
+.e_single dl dd .country.PRO{background-position:-200px -40px;}      /* 罗马尼亚 */
+.e_single dl dd .country.PPT{background-position:0 -240px;}          /* 葡萄牙 */
+.e_single dl dd .country.PIR{background-position:-200px -80px;}      /* 爱尔兰 */
+.e_single dl dd .country.PIT{background-position:0 -280px;}          /* 意大利 */
+.e_single dl dd .country.PSK{background-position:-200px -120px;}     /* 斯洛伐克 */
+.e_single dl dd .country.PGT{background-position:-100px 0;}          /* 克罗地亚 */
+.e_single dl dd .country.PWL{background-position:-200px -160px;}    /* 威尔士 */
+.e_single dl dd .country.PRU{background-position:-100px -40px;}      /* 俄罗斯 */
+.e_single dl dd .country.PIS{background-position:-200px -200px;}     /* 冰岛 */
+.e_single dl dd .country.PAT{background-position:-100px -80px;}      /* 奥地利 */
+.e_single dl dd .country.PHU{background-position:-200px -240px;}     /* 匈牙利 */
+.e_single dl dd .country.PCH{background-position:-100px -120px;}     /* 瑞士 */
+.e_single dl dd .country.PNI{background-position:-200px -280px;}     /* 北爱尔兰 */
+.e_compared dl dd .country{width:100px;color:#2d7bc0;white-space:nowrap;}
+.e_compared dl dd .country em{width:48px;display:inline-block;color:#353535;}
+.e_compared dl dd .country em.textleft{text-align:left;}
+.e_compared dl dd .country em.textright{text-align:right;}
+.e_intertext p span{color:#c73b3a;}
+.e_contRight{width:270px;float:right;}
+.e_datatable{padding:10px;background-color:#fff;}
+.e_datatable table{width:100%;}
+.e_datatable table tr th,.e_datatable table tr td{color:#838383;text-align:center;padding:4px 0;border:1px solid #ccc;}
+.e_datatable table tr td{color:#c73b3a;}
+.e_datatable table thead tr th{background-color:#f1f1f1;color:#454545;}
+.e_betting{padding:10px;background-color:#fff;}
+.e_tiple{padding:6px 0;width:220px;margin:0 auto;display:block;}
+.e_tiple a{width:34px;height:34px;color:#5a5a5a;font-size:30px;line-height:28px;font-weight:bold;text-align:center;display:inline-block;border:1px solid #c1c1c1;background-color:#e9e9e9\9;background:linear-gradient(#fff,#e6e6e6);float:left;}
+.e_tiple a:hover{background-color:#fff\9;background:linear-gradient(#fff,#efefef);}
+.e_tiple a:active{background-color:#e9e9e9\9;background:linear-gradient(#e6e6e6,#fff);}
+.e_tiple input[type="text"]{width:60px;height:34px;font-size:18px;line-height:32px;border:none;border-top:1px solid #c1c1c1;border-bottom:1px solid #c1c1c1;background-color:#fff;color:#282828;text-align:center;float:left;}
+.e_tiple span{float:left;height:34px;color:#5a5a5a;font-size:18px;line-height:32px;margin:0 4px;}
+.e_tiple:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.e_tiple{display:inline-block;}
+* html .e_tiple{height:1%;}
+.e_tiple{display:block;}
+.e_betting p{font-size:16px;color:#414141;line-height:24px;padding:2px 0;}
+.e_betting p span{color:#c73b3a;margin-right:4px;}
+.e_betting p .Epaybig{font-size:20px;}
+.e_betting p a.e_intertext{width:60px;height:28px;line-height:26px;border:1px solid #a7c4de;background-color:#dbe5ee;color:#676767;font-size:12px;float:right;text-align:center;}
+.e_betting p a.e_intertext:hover{border:1px solid #6da7dc;background-color:#6da7dc;color:#fff;}
+.e_betting hr{height:1px;background:none;border-bottom:1px dashed #ccc;margin:6px 0;}
+.e_bettingBtn{text-align:center;padding:10px 0;}
+.e_bettingBtn a{width:110px;height:40px;margin:0 2px;font-size:16px;line-height:38px;display:inline-block;border-radius:4px;border:1px solid #c10d0c;text-align:center;background-color:#f6e0e0;transition:none;cursor:pointer;background-color:#ac0005\9;background:linear-gradient(#e41820,#ac0005);box-shadow:0 1px 0 #d61c23 inset,-1px 0 0 #d61c23 inset,0 -1px 0 #d61c23 inset,1px 0 0 #d61c23 inset;color:#fff;}
+.e_bettingBtn a:hover{background-color:#e59a9a;color:#c10d0c;background-color:#bf0005\9;background:linear-gradient(#f81820,#bf0005);box-shadow:0 1px 0 #d4151b inset,-1px 0 0 #d4151b inset,0 -1px 0 #d4151b inset,1px 0 0 #d4151b inset;color:#fff;}
+.e_foot{}
+.e_foot p{color:#898989;text-align:center;font-size:12px;}
+.e_foot .e_foottip{width:1000px;height:30px;margin:0 auto 10px auto;background-color:#c80000;color:#fff;text-align:center;line-height:30px;}
+.e_foot .e_footlink{width:1000px;height:20px;margin:0 auto;color:#898989;text-align:center;line-height:18px;}
+.e_foot .e_footlink a{margin-right:6px;display:inline-block;border-right:1px solid #898989;padding-right:6px;}
+.e_foot .e_footlink a.e_linklast{border-right:none;}
+
+.blockformatcontext{overflow:hidden;}
+#championDetailWrap,#championshipDetailWrap{
+    height:100px;
+}
+#championDetailWrap table,#championshipDetailWrap table{
+    margin-top:-1px;
+}
+
+
+.headerUser{ position:absolute;right:20px;top:105px; z-index: 2; text-align: right;color: #333;color:#fff;font-size:12px;height:22px;line-height:22px;text-align:right;}
+.headerUser .userName{ font-size: 14px;}
+.headerUser .user-account-balance{}
+.headerUser .user-account-balance .num{ color: #fff; font-size: 14px;}
+.headerUser .user-account-balance .user-cash{position:relative;}
+.headerUser .user-account-balance .user-cash i{ position: absolute;top: 0px; width: 15px; height: 14px; background: url(../game/topbar-icons.png) -62px -3px no-repeat; cursor: pointer!important;}
+.headerUser .user-account-balance .user-cash i.onhandled{cursor:default;}

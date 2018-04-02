@@ -1,0 +1,25 @@
+<?php
+return array (
+  '
+new_window' => '新窗口',
+  'button_onclick' => '按钮事件',
+  'confirm_msg_key' => '提示语',
+  'created_at' => '创建时间',
+  'disabled' => '是否禁用',
+  'for-batch' => '批量操作（页面底部）',
+  'for-item' => '每行记录的右侧管理区',
+  'for-page' => '页面顶部',
+  'for_item' => '记录级',
+  'for_page' => '页面级',
+  'functionality' => '功能',
+  'functionality_id' => '功能',
+  'id' => 'ID',
+  'label' => '标签',
+  'params' => '参数',
+  'position' => '位置',
+  'precondition' => '前置条件',
+  'r_functionality_id' => '关联功能',
+  'sequence' => '排序值',
+  'updated_at' => '更新时间',
+  'use_redirector' => '使用转向器',
+);

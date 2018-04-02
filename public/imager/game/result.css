@@ -1,0 +1,53 @@
+.bf_detail { width: 320px; float: left }
+.bf_detail { border: 1px solid #d22528; overflow: hidden }
+.bf_detail dd { margin: -1px -2px -1px 0; border-right: 1px solid #d22528 }
+.bf_detail dd .zqdc_table { border: 0 }
+.bf_detail dd .zqdc_table td, .bf_detail dd .zqdc_table th { border: solid #cbcbcb; border-width: 0 1px 1px 0 }
+.all_play .bf_detail { border-left: 0; width: 340px }
+.all_play .ss_list, .wrq_play .ss_list { width: 498px; float: left; }
+.all_play .bf_detail, .wrq_play .bf_detail { width: 448px; float: left; }
+.all_play .bf_detail dd { float: left; border-left: 1px solid #d22528; width: 99px; overflow: hidden; margin-right: -1px }
+.all_play .bf_detail dd .zqdc_table { width: 99px }
+.all_play .bf_detail dd.bf { width: 47px }
+.all_play .bf_detail dd.bf .zqdc_table { width: 47px }
+.ss_list td { border: 1px solid #cbcbcb }
+.ss_list th, .bf_detail dd .zqdc_table th { background-image: none }
+.ss_list td, .bf_detail dd .zqdc_table td { background-image: none; background-color: #f9f9f9 }
+.bf_detail dd .zqdc_table td.jqc_kjzs { background-color: #fdf2f5 }
+.bf_detail dd .zqdc_table td.jqc_s, td.jqc_s { background-color: #fb9b9b }
+.bf_detail dd .zqdc_table td.jqc_p, td.jqc_p { background-color: #afdefb }
+.bf_detail dd .zqdc_table td.jqc_f, td.jqc_f { background-color: #b7f0ac }
+.bf_detail dd .zqdc_table td.jqc_qt { background-color: #fee8bb }
+.bf_detail dd .zqdc_table .qt_tr th { line-height: 49px }
+.zqdc_table { border: 1px solid #cbcbcb; width: 100%; font-size: 12px; color: #2b2b2b; font-family: "宋体", Arial }
+.zqdc_table th { border: 1px solid #cbcbcb; text-align: center; line-height: 24px }
+.zqdc_table td { border: 1px solid #cbcbcb; line-height: 28px; text-align: center; overflow: hidden; text-align: center; vertical-align: middle }
+.zqdc_table td.active { background-color: #ffdfe7; border-bottom: 1px solid #fff }
+.zqdc_table .b_tb_CBCBCB td { border-bottom: 1px solid #CBCBCB; border-top: 1px solid #CBCBCB }
+.zqdc_cc a { display: block; border-bottom: 1px solid #fff; width: 100%; height: 100%; color: #FFF }
+.zqdc_cc a:link, .zqdc_cc a:visited, .zqdc_cc a:hover { color: #FFF; text-decoration: none }
+
+.table-title{ background: #f2f2f2; }
+.table-title span{ color: #f00; cursor: pointer; margin-left: 20px;}
+
+#chart{
+width: 600px;
+height: 300px;
+border: 1px solid #000\0;
+z-index: 9999;
+position: absolute;
+background-color: #fff;
+top: 50%;
+margin-top: -200px;
+display: none;
+-webkit-box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.58);
+-moz-box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.58);
+box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.58);
+}
+#chart canvas{
+    background-color:#fff;
+}
+#chart>div{
+    background-color:#fff;
+}
+
