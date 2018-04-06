@@ -27,6 +27,7 @@
     "autoload": {
         "classmap": [
             "app/Http/Controllers",
+            "app/Models",
             "database",
             "lib"
         ],
