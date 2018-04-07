@@ -1,9 +1,9 @@
 [submodule "app/Models"]
 	path = app/Models
-	url = https://gracious-world@github.com/gracious-world/Models.git
+	url = https://github.com/gracious-world/Models.git
 [submodule "lib"]
 	path = lib
-	url = https://gracious-world@github.com/gracious-world/lib.git
-[submodule "resrouces/lang"]
-	path = resrouces/lang
-	url = https://gracious-world@github.com/gracious-world/lang.git
+	url = https://github.com/gracious-world/lib.git
+[submodule "resources/lang"]
+	path = resources/lang
+	url = https://github.com/gracious-world/lang.git
