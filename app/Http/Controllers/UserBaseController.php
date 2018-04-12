@@ -45,6 +45,7 @@ use JWTAuth;
 use FormHelper;
 use String;
 use App\Models\Payment\PaymentPlatform;
+
 // Event
 use App\Events\BaseCacheEvent;
 use App\Models\AppUser\UserMessage;
@@ -1192,6 +1193,52 @@ class UserBaseController extends Controller
         }
         return $sUrl;
     }
+
+    /**
+     * 资源创建页面
+     * @return Response
+     */
+    public function create($id = null)
+    {
+        if ($this->request->method() == 'POST') {
+            DB::connection()->beginTransaction();
+            if ($bSucc = $this->saveData($id)) {
+                DB::connection()->commit();
+                return $this->goBackToIndex('success', __('_basic.created', $this->langVars));
+            } else {
+                // pr($this->model->toArray());
+                // pr('---------');
+                // pr($this->model->validationErrors);exit;
+                DB::connection()->rollback();
+                $this->langVars['reason'] = &$this->model->getValidationErrorString();
+//                pr($this->langVars);
+//                exit;
+                return $this->goBack('error', __('_basic.create-fail', $this->langVars));
+            }
+        } else {
+            $data = $this->model;
+            $isEdit = false;
+            $this->setVars(compact('data', 'isEdit'));
+            $sModelName = $this->modelName;
+            //            if ($sModelName::$treeable){
+//                $sFirstParamName = 'parent_id';
+//            }
+//            else{
+//foreach($this->paramSettings as $sFirstParamName => $tmp){
+//                    break;
+//                }
+            list($sFirstParamName, $tmp) = each($this->paramSettings);
+            //            }
+            // pr($sModelName);
+            // exit;
+            !isset($sFirstParamName) or $this->setVars($sFirstParamName, $id);
+            $aInitAttributes = isset($sFirstParamName) ? [$sFirstParamName => $id] : [];
+            $this->setVars(compact('aInitAttributes'));
+
+            return $this->render();
+        }
+    }
+
 
 }
 

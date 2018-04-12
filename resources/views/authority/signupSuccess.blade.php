@@ -4,7 +4,7 @@
 
 @section ('styles')
     @parent
-    {{ style('reg') }}
+    {!! style('reg') !!}
     <style type="text/css">
         .center
         {

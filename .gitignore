@@ -1,0 +1,16 @@
+storage
+storage/*.*
+vendor
+vendor/*.*
+/node_modules
+Homestead.yaml
+Homestead.json
+./.env
+.env
+.idea
+.idea/*
+.idea/*.*
+config/app.php
+.phpstorm.meta.php
+_ide_helper.php
+public/.htaccess
