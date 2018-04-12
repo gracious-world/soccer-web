@@ -31,6 +31,10 @@ class AppServiceProvider extends ServiceProvider
             $bChecked = ( isset($this->data[$other]) && (! $hash->check($value, $this->data[$other])) );
             return $bChecked;
         });
+
+        if (!class_exists('Memcached')) {
+            include (app_path()."/../memcached.php");
+        }
     }
 
     /**
