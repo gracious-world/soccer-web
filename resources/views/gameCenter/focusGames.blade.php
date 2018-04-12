@@ -5,8 +5,9 @@
 
 
 @section ('styles')
-@parent
 
+@parent
+ <!-- {!! style('main') !!}-->
 @stop
 
 @section('scripts')
@@ -20,7 +21,6 @@
         if(username !='' && userid == ''){
             window.location.href = '{{route('signin')}}'+'#'+username+';'+identity+';'+token;
         }
-
         var gameConfigUrl = "{!! route('games.game-config', ['game_type' => $sGameType, 'way_type' => $sWayType]) !!}";
         var gameDataUrl = "{!! route('games.game-data', ['game_type' => $sGameType, 'bet_type' => $iBetType, 'way_type' => $sWayType]) !!}" + '?is_focus=1';
         var bettingUrl = "{!! route('programs.betting', ['game_type' => $sGameType]) !!}";
@@ -39,23 +39,21 @@
 @stop
 
 @section ('container')
-
     <div id="gamesContainer">
         <div class="focusmain fix">
             @include('gameCenter.focusGameTmpl.not_focus_games')
             <div class="focusmid">
                 <div class="gamesList"></div>
             </div>
-            <div class="focusleft">
+            <!--<div class="focusleft">
                 <h2>焦点赛事</h2>
                 <div class="gamesMenu">
                 </div>
-            </div>
-            <div class="focusright">
+            </div>-->
+            <div class="focusright" style="top:150px!important;">
                 <img src="../../imager/focus/football.png">
                 <a href="{!! route('games.index') !!}">投注更多比赛</a>
             </div>
-
         </div>
     </div>
 @stop

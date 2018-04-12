@@ -59,7 +59,7 @@
                     <ul class="fix">
                         <li><a href="{!! route('games.index') !!}">混合投注</a></li>
                         <li><a href="{!! route('games.single') !!}">单关</a></li>
-                        <li><a href="{!! route('games.focus') !!}">焦点赛事</a></li>
+                        <li><a href="{!! route('games.focus') !!}">焦点赛事1</a></li>
 
                         @if($iUserId)
                         <li class="right">

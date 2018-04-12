@@ -64,15 +64,27 @@
     <div id="gamesContainer" class="main clearfix {!! array_key_exists($sWayType, $aWayTypeCss) ? $aWayTypeCss[$sWayType] : ' mixGg onlyBidCounts showDgTips ' !!}">
         <!--betNav-->
         <div class="betNav" id="wayFilter">
-            <div class="huntou_SelectBox">
-                <span class="text">选择玩法</span>
+            <div class="huntou_SelectBox user_header" style="padding: 0;">
+                <!--<span class="text">选择玩法</span>
                     <div class="btn-group " role="group">
                         <a class="btn btn-default {!! (!$sWayType || $sWayType == 'all') ? 'active' : '' !!}" href="{!! route('games.' . ['index', 'single'][$iBetType]) !!}" type="all" >全部玩法</a>
                         <a class="btn btn-default {!! $sWayType == 'had' ? 'active' : '' !!}" href="{!! route('games.' . ['index', 'single'][$iBetType], ['way_type' => 'had']) !!}" type="had">胜平负/让球胜平负</a>
                         <a class="btn btn-default {!! $sWayType == 'crs' ? 'active' : '' !!}" href="{!! route('games.' . ['index', 'single'][$iBetType], ['way_type' => 'crs']) !!}" type="crs">比分</a>
                         <a class="btn btn-default {!! $sWayType == 'ttg' ? 'active' : '' !!}" href="{!! route('games.' . ['index', 'single'][$iBetType], ['way_type' => 'ttg']) !!}" type="ttg">总进球</a>
                         <a class="btn btn-default {!! $sWayType == 'hafu' ? 'active' : '' !!}" href="{!! route('games.' . ['index', 'single'][$iBetType], ['way_type' => 'hafu']) !!}" type="hafu">半全场</a>
-                    </div>
+                    </div>-->
+                   <!-- <div class="user_header">-->
+					<div>
+						<ul style="border: none;">
+							<li class="usermenu"><a href="#">选择玩法</a></li>
+							<li class="usermenu {!! (!$sWayType || $sWayType == 'all') ? 'samecolor' : '' !!}"><a href="{!! route('games.' . ['index', 'single'][$iBetType]) !!}" type="all" >全部玩法</a></li>
+							<li class="usermenu {!! $sWayType == 'had' ? 'samecolor' : '' !!}"><a href="{!! route('games.' . ['index', 'single'][$iBetType], ['way_type' => 'had']) !!}" type="had">胜平负/让球胜平负</a></li>
+							<li class="usermenu {!! $sWayType == 'crs' ? 'samecolor' : '' !!}"><a href="{!! route('games.' . ['index', 'single'][$iBetType], ['way_type' => 'crs']) !!}" type="crs">比分</a></li>
+							<li class="usermenu {!! $sWayType == 'ttg' ? 'samecolor' : '' !!}"><a href="{!! route('games.' . ['index', 'single'][$iBetType], ['way_type' => 'ttg']) !!}" type="ttg">总进球</a></li>
+							<li class="usermenu {!! $sWayType == 'hafu' ? 'samecolor' : '' !!}"><a href="{!! route('games.' . ['index', 'single'][$iBetType], ['way_type' => 'hafu']) !!}" type="hafu">半全场</a></li>
+						</ul>
+					</div>
+				<!--</div>-->
             <!--
                 <label inf="主队得分>客队得分=胜，主队得分=客队得分=平，主队得分<客队得分=负" class="jtip" id="onlySpf" gametype="1">
                     <i class="icoFx icoFx_active"></i>胜平负
@@ -80,13 +92,14 @@
                 <label inf="主队得分（±让球数）后，与客队得分比较后的胜平负" class="jtip" id="onlyRqSpf" gametype="2">
                     <i class="icoFx  icoFx_active"></i>让球胜平负
                 </label> -->
+            	 <div class="moreLinks">
+	                <a href="{!! route('games.result') !!}" >最新开奖</a>
+	                <a href="{!! route('games.trend') !!}" >奖金走势</a>
+	                <a href="javascript:void(0);" id="data-spdex" >指数分析</a>
+	                <a href="javascript:void(0);" id="data-rule" >玩法规则</a>
+	            </div>
             </div>
-            <div class="moreLinks">
-                <a href="{!! route('games.result') !!}" >最新开奖</a>
-                <a href="{!! route('games.trend') !!}" >奖金走势</a>
-                <a  href="javascript:void(0);" id="data-spdex" >指数分析</a>
-                <a  href="javascript:void(0);" id="data-rule" >玩法规则</a>
-            </div>
+           
         </div>
 
         <!--betLeft-->
@@ -164,7 +177,7 @@
                 <div class="floatBox">
                     <!--第一步-->
                     <div class="selectedGamesContainer unselect">
-                        <h2><i>1</i>选号明细</h2>
+                        <h2>选号明细</h2>
                         <table>
                             <colgroup><col width="65"><col><col width="30"><col><col width="35"></colgroup>
                             <thead>
@@ -186,7 +199,7 @@
                     </div>
                     <!--第二步 unselect -->
                     <div class="gatesContainer unselect">
-                        <h2><i>2</i>过关方式</h2>
+                        <h2>过关方式</h2>
                         <div class="methodContent">
                             <ul class="guoguanTab clearfix" style={!! ($sPageName == 'singleGames') ? 'display:none;':''!!}>
                                 <li class="active" gate_type="m_1" action_type="gateSwitcher">自由过关</li>
@@ -214,7 +227,7 @@
                     </div>
                     <!--第三步-->
                     <div class="confirmContainer unselect">
-                        <h2><i>3</i>确认投注</h2>
+                        <h2>确认投注</h2>
                             <div class="qrtzBlock">
                                 <div class="dott">
                                     我要买
@@ -232,7 +245,7 @@
                                     场比赛，共<strong class="selectedBets c_f6c15a">0</strong> 注
                                 </p>
                                 <p>倍数：<strong class="gameMultiple">10</strong>倍 <span class="totalprice">总金额： <strong class="c_f6c15a"><span class="amount">0</span>元</strong></span></p>
-                                <p>理论最高奖金:<span class="theorybonus"><strong>0.00</strong>元</span></p>
+                                <p>理论最高奖金:<span class="theorybonus"><strong>0.00</strong>元</span> <a href="javascript:void(0);" class="clearBetting fr">明细</a></p>
                                 <!-- <p>
                                     <a href="#" class="fr" id="openDetailBonus">明细</a>
                                     <span id="bonusLabel">单注最高奖金：</span>

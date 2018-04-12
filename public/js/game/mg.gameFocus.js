@@ -325,7 +325,7 @@ Mango.Game = (function() {
 
         } else {
             fixDom.animate({
-                top: '93px'
+                top: '455px'
             }, 5);
         }
 

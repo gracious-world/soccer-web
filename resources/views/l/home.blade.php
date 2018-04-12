@@ -4,6 +4,7 @@
 @section ('styles')
 @parent
     {!! style('ucenter') !!}
+    {!! style('main') !!}
 @stop
 
 @section('scripts')

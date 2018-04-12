@@ -55,14 +55,12 @@
                         @endif
                     </td>
                 </tr>
-
             <tr>
               <td align="right" valign="top"><span class="field-name">提现金额：</span></td>
               <td>
                     <input id="J-input-money" type="text" class="input w-2 input-ico-money" name="amount" />&nbsp; 元
                     <br />
                     <span class="tip">单笔最低提现金额：<span id="J-money-min">{!! $iMinWithdrawAmount ? $iMinWithdrawAmount : 100.00 !!}</span>元，最高<span id="J-money-max">{!! $iMaxWithdrawAmount ? $iMaxWithdrawAmount : 1500000.00!!}</span>元</span>
-
                 </td>
           </tr>
             <tr>
@@ -72,9 +70,6 @@
                 </td>
           </tr>
         </table>
-
-
-
     </form>
     </div>
     <div class="recharge-help">

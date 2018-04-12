@@ -18,6 +18,8 @@ return array(
             'cssAliases' => array(  //  样式文件别名配置
                   // 框架样式
                   'ui'       => 'css/bootstrap.css',
+                  //header页面
+                  'main'       => 'css/main.css',
                   //游戏页面
                   'gameBase'     => 'imager/base.css',
                   'gameUi'       => 'imager/game/game.css',
@@ -92,7 +94,8 @@ return array(
                 //login + register
                 'validate'            => 'js-min/validate.js' . $version,
                 'global'              => 'js-min/global.js' . $version,
-            ),
+            	'headerjs'              => 'js/header/js.js' . $version,
+			),
             // 'jsAliases'  => array(  //  脚本文件别名配置
             //       //工具
             //       'jquery'              => 'js-min/jquery-1.9.1.min.js',

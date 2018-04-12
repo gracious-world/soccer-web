@@ -59,20 +59,20 @@
 }
 
 </style>
-<div class="notice-wrap">
+<!--<div class="notice-wrap">
     <div class="notice-block opaque">&nbsp;</div>
     <div class="notice-title">赛事公告</div>
     <div class="notice-content">
         <ul class="clearfix noticeWrap"></ul>
     </div>
-</div>
-<script id="gamesNotice" type="text/x-dot-template">
+</div>-->
+<!--<script id="gamesNotice" type="text/x-dot-template">
     <div class="notice-list">
         @{{ for(var i=0,len=it.length;i<len;i++){ }}
             <p>@{{=it[i] }}</p>
         @{{ } }}
     </div>
-</script>
+</script>-->
 <script id="noticeItem" type="text/x-dot-template">
     @{{ for(var i=0,len=it.length;i<len;i++){ }}
     <li><a href="javascript:void(0)">@{{=i+1 }}. @{{=it[i].text}}</a></li>

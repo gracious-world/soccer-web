@@ -26,7 +26,6 @@
         @show
     </head>
     <body>
-        @include('w.top-header')
         @include('w.nav')
         @yield('container')
     </body>

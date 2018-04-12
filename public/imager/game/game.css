@@ -1,7 +1,7 @@
 body {
    /* background:#4E0D0D;*/
 }
-.wrapper {background:#fff ;background-attachment:fixed;overflow:hidden;zoom:1;margin-bottom:10px;position:relative;z-index:11}
+.wrapper {background:#f1f1f1 ;background-attachment:fixed;overflow:hidden;zoom:1;margin-bottom:10px;position:relative;z-index:11}
 .wrapper-bg {background:#0A1624 url(game-bg.jpg) top center no-repeat;background-attachment:fixed;overflow:hidden;zoom:1;margin-bottom:10px;position:relative;z-index:11}
 
 .docBody { width:990px; margin:10px auto 0 auto; padding:0}
@@ -22,9 +22,9 @@ a, a:hover, a:active {color:#ba2636}
 .mask {width:236px;height:100%;background:#f46b6b;filter:alpha(Opacity=20);-moz-opacity:.3;opacity:.3}
 .line1, .line2 {overflow:hidden;zoom:1;height:38px;line-height:38px;white-space:nowrap}
 .dataBody .line2 {margin-top:-1px}
-.arrow {position:relative;width:7px;margin-left:3px;display:inline-block;vertical-align:middle;height:4px;font-size:0;line-height:0;overflow:hidden;top:2px;cursor:pointer;background:url(gray_ico_713ea05.png) -48px -126px no-repeat;transition-property:transform;transition-duration:.4s}
+.arrow {position:relative;width:11px;margin-left:3px;display:inline-block;vertical-align:middle;height:12px;margin-top:-2px;font-size:0;line-height:0;overflow:hidden;top:2px;cursor:pointer;background:url(game_down.png) no-repeat 100% 100%;transition-property:transform;transition-duration:.4s}
 .cuspText {position:relative;cursor:pointer}
-.cusp {position:absolute;display:inline-block;top:6px;right:7px;width:0;height:0;line-height:0;font-size:0;overflow:hidden;border-width:0 4px 4px;*border-width:0 5px 5px;border-color:transparent transparent #a8a8a8;border-style:solid;_border-style:solid dotted;zoom:1;text-indent:0}
+.cusp {position:absolute;display:inline-block;top:6px;right:7px;width:0;height:0;line-height:0;font-size:0;overflow:hidden;border-width:0 8px 14px;*border-width:0 5px 5px;border-color:transparent transparent #FFFFFF;border-style:solid;_border-style:solid dotted;zoom:1;text-indent:0}
 .questionMark {
     cursor:pointer
 }
@@ -332,7 +332,7 @@ a, a:hover, a:active {color:#ba2636}
 
 
 .gameMenu {
-    margin-top:-31px;
+   /* margin-top:-31px;*/
     padding-left:102px;
     line-height:30px;
     height:31px;
@@ -526,12 +526,15 @@ a, a:hover, a:active {color:#ba2636}
     height:19px;
     overflow:visible;
     padding:13px 8px 0 0;
-    white-space:nowrap
+    white-space:nowrap;
+    margin-top: -53px;
+    
 }
 .betNav .moreLinks a, .betNav .moreLinks a:visited {
     margin:0 8px;
     line-height:19px;
-    color:#333
+    color: #262626;
+    font-size: 16px;
 }
 .betNav .moreLinks a:hover {
     color:#ba2636;
@@ -540,21 +543,23 @@ a, a:hover, a:active {color:#ba2636}
 .tzTips {
     background:#fff;
     margin-top:10px;
-    border:1px solid #ccc
+    /*border:1px solid #ccc*/
 }
 .tzTips h2 {
     height:32px;
     line-height:32px;
     padding-left:13px;
     font-weight:700;
-    border-bottom:1px solid #ccc;
-    border-top:1px solid #fff;
-    background:url(gray_repeat_92768ca.png) 0 -173px repeat-x
+    font-family: "Adobe Heiti Std";
+    background-color: #262626;
+    color: white;
 }
 .tzTips ul {
     margin:0 20px 0 35px;
     padding:13px 0;
-    line-height:22px
+    line-height:22px;
+    font-family: "Adobe Heiti Std";
+    color:black;
 }
 .tzTips ul li {
     padding:3px 0
@@ -606,21 +611,34 @@ a, a:hover, a:active {color:#ba2636}
     height:39px;
     line-height:39px;
     border:1px solid #ccc;
-    padding:0 15px;
+    padding:0 0 0 15px;
     margin-top:-1px;
-    background:#fff;
-    font-family:simsun
+    background:#262626;
+    font-family:simsun;
+    color: white;
+    margin-bottom: 10px;
 }
 .wrapper .mcSelectBox {
     float:right;
     width:auto;
+    background: #1eb357;
 }
 .wrapper #J-select-recharge {
     font-size: 100%;
-    border: 1px solid #ccc;
-    height: 24px;
-    line-height: 24px;
-    border-radius: 3px;
+   /* border: 1px solid #ccc;*/
+    height: 38px;
+    line-height: 40px;
+    background: none;
+   	padding-left: 5px;
+    width: 85px;
+   /*很关键：将默认的select选择框样式清除*/
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  outline: none;
+  border: none;
+  /*在选择框的最右侧中间显示小箭头图片*/
+  background: url('../header/select_xla.png') no-repeat 70px 13px;
 }
 
 .wrapper .mcSelectBox .imitateSelect {
@@ -776,16 +794,25 @@ a, a:hover, a:active {color:#ba2636}
     height:60px;
     line-height:60px;
     text-align:center;
-    background:url(gray_repeat_92768ca.png) 0 -233px repeat-x;
+    background: #FFFFFF;
+    /*background:url(gray_repeat_92768ca.png) 0 -233px repeat-x;*/
     width:750px;
-    border-bottom:1px solid #ccc
+    color:#262626;
+
+  font-size: 14px;
+  font-family: "Adobe Heiti Std";
+  color: rgb(19, 19, 19);
+ 
+
+    /*border-bottom:1px solid #ccc*/
 }
 .dataHead dd {
     float:left;
     height:60px;
-    border-right:1px solid #fff;
-    border-left:1px solid #ccc;
-    position:relative
+    border-right:1px solid #f1f1f1;
+   /* border-left:1px solid #ccc;*/
+    position:relative;
+    
 }
 .dataHead span {
     height:30px;
@@ -793,7 +820,7 @@ a, a:hover, a:active {color:#ba2636}
     display:block
 }
 .dataHead span.btnBox {
-    border-top:1px solid #ccc;
+    border-top:1px solid #f1f1f1;
     white-space:nowrap;
 
 }
@@ -801,7 +828,7 @@ a, a:hover, a:active {color:#ba2636}
     display:inline-block;
     height:29px;
     line-height:29px;
-    border-right:1px solid #ccc;
+    border-right:1px solid #f1f1f1;
 }
 .dataHead dd em.arrow {
     float:none;
@@ -862,7 +889,7 @@ a, a:hover, a:active {color:#ba2636}
     border-right:0
 }
 .dataHead .co8 {
-    border-right:1px solid #ccc
+    /*border-right:1px solid #ccc*/
 }
 .dataHead .gameSeleList {
     background:#fff;
@@ -1028,16 +1055,20 @@ a, a:hover, a:active {color:#ba2636}
     top:29px
 }
 .dataHead .line2 {
-    border-top:1px solid #ccc;
+    border-top:1px solid #f1f1f1;
     height:29px;
     line-height:29px
 }
 .dataBody {
-    border:1px solid #ccc;
+    /*border:1px solid #ccc;*/
     background:#fff;
     position:relative;
     zoom:1;
-    border-top:none
+    border-top:none;
+    margin-top: 5px;
+    font-size: 14px;
+    font-family: "Adobe Heiti Std";
+    color: rgb(19, 19, 19);
 }
 .dataBody dl {
     width:748px;
@@ -1050,16 +1081,19 @@ a, a:hover, a:active {color:#ba2636}
     padding-left:10px;
     border-bottom:1px solid #ccc;
     border-top:1px solid #fff;
-    background:#f3f2f2
+    background:#1eb357;
+    color: white;
+    font-family: "Adobe Heiti Std";
+    font-size: 14px;
 }
 .dataBody dt .cuspText {
     position:absolute;
-    right:20px;
+    right:27px;
     top:0
 }
 .dataBody dt .cusp {
-    top:15px;
-    right:-12px
+     right:-22px;
+    top:9px;
 }
 .dataBody dd {
     height:40px;
@@ -1070,14 +1104,15 @@ a, a:hover, a:active {color:#ba2636}
 }
 .dataBody dd span {
     float:left;
-    border:1px solid #fff;
-    border-color:#fff #ccc #ccc #fff;
+    border:1px solid #f1f1f1;
+   /* border-color:#fff #ccc #ccc #fff;*/
     border-bottom:0;
     text-align:center;
     background:#fff;
     height:39px;
     line-height:39px;
     position:relative;
+    border-left: 0;
 }
 .dataBody dd.even span {
     background:#fffeef
@@ -1206,11 +1241,11 @@ a, a:hover, a:active {color:#ba2636}
     width:49px;
     cursor:pointer;
     overflow:hidden;
-    background:url(gray_repeat_92768ca.png) 0 -87px repeat-x;
+  /*  background:url(gray_repeat_92768ca.png) 0 -87px repeat-x;*/
     height:39px;
     line-height:39px;
     display:block;
-    border-right:1px solid #ccc;
+    border-right:1px solid #f1f1f1;
 
     position:relative;
     vertical-align:top;
@@ -1342,9 +1377,8 @@ a, a:hover, a:active {color:#ba2636}
     transform:rotate(360deg)
 }
 .closeData .cuspText .cusp {
-    border-width:4px 4px 0;
-    *border-width:5px 5px 0;
-    border-top-color:#a8a8a8
+    border-width: 14px 8px 0;
+    border-top-color:#ffffff
 }
 .closeData dd, .isOver {
     display:none
@@ -1462,16 +1496,16 @@ dd span .openBtn {
     width:50px;
     height:79px;
     position:absolute;
-    left:-2px;
-    top:-1px;
+    left: 0px;
+    top: 0px;
     line-height:79px;
     float:right;
-    border:solid #ccc;
+    /*border:solid #ccc;
     border-width:0 1px;
-    border-right:0;
+    border-right:0;*/
     cursor:pointer;
     background:#ebeaea;
-    background:url(gray_repeat_92768ca.png?2015) 0 -233px repeat-x
+   /* background:url(gray_repeat_92768ca.png?2015) 0 -233px repeat-x*/
 }
 dd span .openBtnHover {
     background-position:left bottom
@@ -1499,18 +1533,19 @@ dd span .closeBtn {
     box-shadow:none
 }
 dd span .closeBtn .arrow {
-    background-position:-48px -121px
+    background:url(game_up.png) no-repeat 100% 100%;
 }
 .mixGg .dataBody dd .line1, .mixGg .dataBody dd .line2 {
     width:184px;
-    border-right-color:#CCC;
+    /*border-right-color:#CCC;*/
     position:relative
 }
 .dataBody dd .line1, .dataBody dd .line2 {
     height:38px;
     line-height:38px;
-    border:1px solid #ccc;
-    border-color:#ccc #fff #ccc #fff;
+    border:1px solid #f1f1f1;
+    border-left: 0;
+ /*   border-color:#ccc #fff #ccc #fff;*/
 }
 .dataBody dd .line1 {
     border-top-color:#fff;
@@ -1757,12 +1792,13 @@ dd span .closeBtn .arrow {
 }
 .asideBox {
     float:right;
-    width:240px;
-    background:#fff
+    width:235px;
+    background:#FFFFFF;
+    font-family: "Adobe Heiti Std";
 }
 .floatBox {
-    width:240px;
-    background:#f3f2f2;
+    width:100%;
+    background:#FFFFFF;
     padding-bottom:5px
 }
 .asideBox .more {
@@ -1771,12 +1807,16 @@ dd span .closeBtn .arrow {
     color:#717171
 }
 .asideBox h2 {
-    border-top:2px solid #b12034;
-    border-bottom:1px solid #ccc;
-    height:27px;
-    padding-left:40px;
+    /*border-top:2px solid #b12034;
+    border-bottom:1px solid #ccc;*/
+    height:30px;
+    padding: 5px 0;
+    text-align: center;
+    line-height: 40px;
     font:14px/27px'微软雅黑';
-    background:#fff;
+    background:#262626!important;
+    color: white!important;
+    
     position:relative
 }
 .asideBox h2 i {
@@ -1809,10 +1849,11 @@ dd span .closeBtn .arrow {
     font-size:12px
 }
 .asideBox table {
-    width:240px;
+    width:100%;
     table-layout:fixed;
     text-align:center;
-    margin-top:-1px
+    margin-top:-1px;
+    color:#262626;
 }
 .asideBox table th {
     height:29px;
@@ -1820,7 +1861,7 @@ dd span .closeBtn .arrow {
 }
 .asideBox table thead th {
     border:1px solid #ccc;
-    background:#f9f9f9
+    /*background:#f9f9f9*/
 }
 .asideBox table .tr {
     text-align:right
@@ -2034,7 +2075,8 @@ a.blockYel:hover {
     margin:-5px 0 5px 0
 }
 .qrtzBlock {
-    padding:0 10px
+    padding:0 10px;
+    color: #000000;
 }
 .qrtzBlock p {
     line-height:30px
@@ -2050,7 +2092,7 @@ a.blockYel:hover {
     _margin:9px 3px 9px 0;
     vertical-align:middle;
     position:absolute;
-    left:85%;
+    left:90%;
     top:15px;
 }
 .qrtzBlock .icoDx {
@@ -2063,7 +2105,8 @@ a.blockYel:hover {
 .qrtzBlock .dott {
     text-align:center;
     padding:10px 0 15px 0;
-    border-bottom:1px dotted #ccc
+    border-bottom:1px dotted #ccc;
+    
 }
 .tzBtnBox {
     text-align:center;
@@ -2072,30 +2115,29 @@ a.blockYel:hover {
 }
 .tzBtnBox .ljtzBtn, .tzBtnBox .fqhmBtn, .tzBtnBox .fqytBtn {
     display:inline-block;
-    width:103px;
-    height:32px;
-    margin:5px 0;
-    font-size:0;
-    line-height:0;
-    background:url(jczq_btn_d49ca76.png) -104px 0 no-repeat
+    width: 150px;
+    height: 40px;
+    background:url(mmc/lijitouzhu.png) no-repeat 100% 100%;
+    
 }
-.tzBtnBox .ljtzBtn:hover {
+
+/*.tzBtnBox .ljtzBtn:hover {
     background-position:-208px 0
-}
+}*/
 .tzBtnBox .fqhmBtn {
     background-position:-104px -33px;
     margin-left:5px
 }
-.tzBtnBox .fqhmBtn:hover {
+/*.tzBtnBox .fqhmBtn:hover {
     background-position:-208px -33px
-}
+}*/
 .tzBtnBox .fqytBtn {
     background-position:0 -188px;
     margin-left:30px
 }
-.tzBtnBox .fqytBtn:hover {
+/*.tzBtnBox .fqytBtn:hover {
     background-position:-105px -188px
-}
+}*/
 .tzBtnBox .tjfaBtn {
     display:inline-block;
     width:103px;
@@ -2105,18 +2147,19 @@ a.blockYel:hover {
     line-height:0;
     background:url(spf_dgp_all_8b3804f.png) -104px 0 no-repeat
 }
-.tzBtnBox .tjfaBtn:hover {
+/*.tzBtnBox .tjfaBtn:hover {
     background-position:-208px 0
-}
+}*/
 .unselect, .unselect a:link, .unselect:visited {
-    color:#999
+    color:#1eb357
 }
 .unselect .unSeleTips {
-    background:#f3f2f2;
+    background:#FFFFFF;
     display:block;
     height:42px;
     line-height:42px;
-    margin:0
+    margin:0;
+    color: black;
 }
 .unselect .scrollMoni,
 .unselect .guoguanTab,
@@ -2860,18 +2903,18 @@ a.blockYel:hover {
     text-indent:10px
 }
 .guideList {
-    left:50%;
+    left:53%;
     margin-left:495px;
     top:320px;
     overflow:hidden;
     position:absolute;
     text-align:center;
-    top:328px;
+    top:190px;
     width:26px;
     z-index:12;
     width:58px;
-    border:1px solid #f4d0d0;
-    background:#fdf6f6;
+    /*border:1px solid #f4d0d0;
+    background:#fdf6f6;*/
     position:fixed;
     _position:absolute;
     color:;
@@ -2885,15 +2928,22 @@ a.blockYel:hover {
 .guideList li {
     width:58px;
     height:53px;
-    border-bottom:1px solid #f4d0d0;
-    display:block
+  	margin-top: 5px;
+    display:block;
+    background-color: white;
 }
 .guideList li i {
-    width:25px;
-    height:25px;
+    width: 30px;
+    height: 30px;
     display:block;
     margin:5px auto 0;
-    background:url(ssq_guide_nav_820e890.png) 0 -24px no-repeat
+    background:url(iftj.png) no-repeat;
+    float: left;
+    margin-left: 15px;
+    margin-top: 8px;
+}
+.guideList li span{
+	display: inline-block;
 }
 .guideList a, .guideList a:link, .guideList a:visited, .guideList a:active {
     text-decoration:none;
@@ -2902,21 +2952,22 @@ a.blockYel:hover {
 .guideList a:hover {
     color:#ba2636
 }
-.guideList .howGet a:hover i {
+/*.guideList .howGet a:hover i {
     background-position:0 0
-}
+}*/
 .guideList .howCal i {
-    background-position:-25px -24px
+    background:url(ifsj.png) no-repeat;
 }
-.guideList .howCal a:hover i {
+/*.guideList .howCal a:hover i {
     background-position:-25px 0
-}
+}*/
 .guideList .gameIntr i {
-    background-position:-49px -24px
+    /*background-position:-49px -24px*/
+   background:url(gamesm.png) no-repeat;
 }
-.guideList .gameIntr a:hover i {
+/*.guideList .gameIntr a:hover i {
     background-position:-49px 0
-}
+}*/
 .guideList .newGuide i {
     background-position:-73px -24px
 }
@@ -3025,11 +3076,11 @@ a.blockYel:hover {
 }
 .showDgTips .analyMore .analyMoreTable .dgTips i {
     display:inline-block;
-    width:36px;
-    height:14px;
-    line-height:14px;
+    width:100%;
+    height:20px;
+    line-height:20px;
     text-align:center;
-    background:url(gray_ico_713ea05.png) -129px -228px no-repeat;
+    background-color:#1fb457;
     color:#fff
 }
 .bettingBox .gameSelect .dgTips .triAngle, .selectBox .dgTips .triAngle {

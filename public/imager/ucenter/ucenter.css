@@ -150,7 +150,7 @@ i[class|='shortcut-icon']{display:inline-block;*display:inline;*zoom:1;width:30p
 .tab-title-small li.current a{border-bottom-width:1px;}
 .nav-bg-tab .tab-title{position:absolute;right:5px;line-height:28px;top:7px;padding:0;}
 .nav-bg-tab .tab-title li{vertical-align:top;}
-.main-content .content{background:#fff;min-height:430px;_height:430px;padding:20px;border:1px solid #ccc;border-top:none;}
+.main-content .content{background:#fff;min-height:430px;_height:430px;padding:20px;border:1px solid #ccc;}
 
 .area-search{border:1px solid #ebebeb;background-color:#fafafa;border-left:none;border-right:none;padding:5px 10px;position:relative;margin-bottom:15px;}
 .area-search .row {padding:5px 0;}

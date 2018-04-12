@@ -3,12 +3,19 @@
 @{{ for (var i = 0, l = groupItem.length; i < l; i++) { var item = groupItem[i]; }}
 <div class="fevent gameBox">
     <div class="fetop">
-        <p>@{{=item.l_cn_abbr}}</p>
-        <p>@{{=(item.date + ' ' + item.time)}}开赛</p>
-        <div class="fTit">
-            <span class="left">@{{=item.h_cn_abbr}}</span>
-            <span class="right">@{{=item.a_cn_abbr}}</span>
-        </div>
+    	<div style="border-right: 1px solid #7f7f7f;">
+    		 <p style="margin-top: 15px;">@{{=item.l_cn_abbr}}</p>
+        	 <p>@{{=(item.date + ' ' + item.time)}}开赛</p>
+    	</div>
+    	<div style="text-align: center;">
+    		<span class="left">@{{=item.h_cn_abbr}}</span>
+    	</div>
+    	<div style="text-align: center;">
+    		 <span class="right">@{{=item.a_cn_abbr}}</span>
+    	</div>
+       <div class="feyopfour"></div>
+        <!--<div class="fTit">
+        </div>-->
     </div>
     @{{ if (item.had && +item.single_ways.had) { }}
     <div class="focusTab">
@@ -21,7 +28,6 @@
             @{{ } }}
         </ul>
         <div class="focusbox">
-            
             <!-- 猜胜平负 -->
             <div class="focuschild wayBox" index="@{{=item.bn + '_had'}}">
                 <div class="focuscht">
@@ -34,7 +40,7 @@
                                     <b>@{{=item.h_cn_abbr}}</b>
                                     <font>胜@{{=item.had.h[0]}}</font>
                                 </span>
-                                <em class="iconfont iconLower-right"></em>
+                                <em class=""></em>
                             </div>
                         </li>
                         <li>
@@ -45,7 +51,7 @@
                                     <b>平局</b>
                                     <font>@{{=item.had.d[0]}}</font>
                                 </span>
-                                <em class="iconfont iconLower-right"></em>
+                                <em class=""></em>
                             </div>
                         </li>
                         <li>
@@ -56,7 +62,7 @@
                                     <b>@{{=item.a_cn_abbr}}</b>
                                     <font>胜@{{=item.had.a[0]}}</font>
                                 </span>
-                                <em class="iconfont iconLower-right"></em>
+                                <em class=""></em>
                             </div>
                         </li>
                     </ul>
@@ -73,8 +79,8 @@
                     <p>参考奖金：￥<span class="referPrizeText">0</span></p>
                     <p>盈利金额：￥<span class="profitText">0</span></p>
                     <div class="focusBtn">
-                        <!-- <a class="btnDisabled btn-ll" href="javascript:void(0);">奖金优化</a> -->
-                        <a class="Redbtn btntext-red btn-ll" href="javascript:void(0);" action_type="betting">立即投注</a>
+                        <!--<a class="btnDisabled btn-ll" href="javascript:void(0);">奖金优化</a> -->
+                        <a class="Redbtn btntext-red btn-ll" href="javascript:void(0);" action_type="betting"></a>
                     </div>
                     <i></i>
                 </div>
@@ -92,7 +98,7 @@
                                     <b>@{{=item.h_cn_abbr}}</b>
                                     <font>胜@{{=item.hhad.ch[0]}}</font>
                                 </span>
-                                <em class="iconfont iconLower-right"></em>
+                                <em class=""></em>
                             </div>
                         </li>
                         <li>
@@ -103,7 +109,7 @@
                                     <b>平局</b>
                                     <font>@{{=item.hhad.cd[0]}}</font>
                                 </span>
-                                <em class="iconfont iconLower-right"></em>
+                                <em class=""></em>
                             </div>
                         </li>
                         <li  onstyle="true">
@@ -114,7 +120,7 @@
                                     <b>@{{=item.a_cn_abbr}}</b>
                                     <font>胜@{{=item.hhad.ca[0]}}</font>
                                 </span>
-                                <em class="iconfont iconLower-right"></em>
+                                <em class=""></em>
                             </div>
                         </li>
                     </ul>
@@ -132,7 +138,7 @@
                     <p>盈利金额：￥<span class="profitText">0</span></p>
                     <div class="focusBtn">
                         <!-- <a class="btnDisabled btn-ll" href="javascript:void(0);">奖金优化</a> -->
-                        <a class="Redbtn btntext-red btn-ll" href="javascript:void(0);" action_type="betting">立即投注</a>
+                        <a class="Redbtn btntext-red btn-ll" href="javascript:void(0);" action_type="betting"></a>
                     </div>
                     <i></i>
                 </div>
@@ -151,7 +157,7 @@
             <div class="focuschild wayBox" index="@{{=item.bn + '_bigsmall'}}">
                 <div class="focuscht">
                     <div class="focusprompt">
-                        <p>说明：两队进球数相加<strong>小于3球为小，大于等于3球为大</strong></p>
+                        <p>说明：两队进球数相加小于3球为小，大于等于3球为大</p>
                         <p>示例：比分1：1  1+1=2→ 小；比分 4：5  4+5=9=7+→ 大</p>
                     </div>
                     <ul class="Flist02 fix">
@@ -162,7 +168,7 @@
                                     <b>小</b>
                                     <font>@{{=(Math.min.apply(null, ttgOddSmall)+ '-' + Math.max.apply(null, ttgOddSmall))}}</font>
                                 </span>
-                                <em class="iconfont iconLower-right"></em>
+                                <em></em>
                             </div>
                         </li>
                         <li title="总进球数3,4,5,6,7+">
@@ -172,7 +178,7 @@
                                     <b>大</b>
                                     <font>@{{=(Math.min.apply(null, ttgOddBig)+ '-' + Math.max.apply(null, ttgOddBig))}}</font>
                                 </span>
-                                <em class="iconfont iconLower-right"></em>
+                                <em></em>
                             </div>
                         </li>
                     </ul>
@@ -190,7 +196,7 @@
                     <p>盈利金额：￥<span class="profitText">0</span></p>
                     <div class="focusBtn">
                         <!-- <a class="btnDisabled btn-ll" href="javascript:void(0);">奖金优化</a> -->
-                        <a class="Redbtn btntext-red btn-ll" href="javascript:void(0);" action_type="betting">立即投注</a>
+                        <a class="Redbtn btntext-red btn-ll" href="javascript:void(0);" action_type="betting"></a>
                     </div>
                     <i></i>
                 </div>
@@ -209,7 +215,7 @@
                                     <b>单</b>
                                     <font>@{{=(Math.min.apply(null, ttgOddOdd)+ '-' + Math.max.apply(null, ttgOddOdd))}}</font>
                                 </span>
-                                <em class="iconfont iconLower-right"></em>
+                                <em class=""></em>
                             </div>
                         </li>
                         <li title="总进球数0,2,4,,6,7+">
@@ -219,7 +225,7 @@
                                     <b>双</b>
                                     <font>@{{=(Math.min.apply(null, ttgOddEven) + '-' + Math.max.apply(null, ttgOddEven))}}</font>
                                 </span>
-                                <em class="iconfont iconLower-right"></em>
+                                <em class=""></em>
                             </div>
                         </li>
                     </ul>
@@ -238,7 +244,7 @@
                     <p>盈利金额：￥<span class="profitText">0</span></p>
                     <div class="focusBtn">
                         <!-- <a class="btnDisabled btn-ll" href="javascript:void(0);">奖金优化</a> -->
-                        <a class="Redbtn btntext-red btn-ll" href="javascript:void(0);" action_type="betting">立即投注</a>
+                        <a class="Redbtn btntext-red btn-ll" href="javascript:void(0);" action_type="betting"></a>
                     </div>
                     <i></i>
                 </div>
@@ -255,7 +261,7 @@
                                         <b>胜 1 球</b>
                                         <font>@{{=(Math.min.apply(null, crsOddH1) + '-' + Math.max.apply(null, crsOddH1))}}</font>
                                     </span>
-                                    <em class="iconfont iconLower-right"></em>
+                                    <em class="smllqb"></em>
                                 </div>
                             </li>
                             <li>
@@ -265,7 +271,7 @@
                                         <b>胜 2 球</b>
                                         <font>@{{=(Math.min.apply(null, crsOddH2) + '-' + Math.max.apply(null, crsOddH2))}}</font>
                                     </span>
-                                    <em class="iconfont iconLower-right"></em>
+                                    <em class="smllqb"></em>
                                 </div>
                             </li>
                             <li>
@@ -275,7 +281,7 @@
                                         <b>胜 3 球</b>
                                         <font>@{{=(Math.min.apply(null, crsOddH3) + '-' + Math.max.apply(null, crsOddH3))}}</font>
                                     </span>
-                                    <em class="iconfont iconLower-right"></em>
+                                    <em class="smllqb"></em>
                                 </div>
                             </li>
                             <li>
@@ -285,7 +291,7 @@
                                         <b>胜更多</b>
                                         <font>@{{=(Math.min.apply(null, crsOddHother) + '-' + Math.max.apply(null, crsOddHother))}}</font>
                                     </span>
-                                    <em class="iconfont iconLower-right"></em>
+                                    <em class="smllqb"></em>
                                 </div>
                             </li>
                         </ul>
@@ -297,7 +303,7 @@
                                         <b>平局</b>
                                         <font>@{{=(Math.min.apply(null, crsOddDraw) + '-' + Math.max.apply(null, crsOddDraw))}}</font>
                                     </span>
-                                    <em class="iconfont iconLower-right"></em>
+                                    <em class="smllqb"></em>
                                 </div>
                             </li>
                         </ul>
@@ -309,7 +315,7 @@
                                         <b>胜 1 球</b>
                                         <font>@{{=(Math.min.apply(null, crsOddA1) + '-' + Math.max.apply(null, crsOddA1))}}</font>
                                     </span>
-                                    <em class="iconfont iconLower-right"></em>
+                                    <em class="smllqb"></em>
                                 </div>
                             </li>
                             <li>
@@ -319,7 +325,7 @@
                                         <b>胜 2 球</b>
                                         <font>@{{=(Math.min.apply(null, crsOddA2) + '-' + Math.max.apply(null, crsOddA2))}}</font>
                                     </span>
-                                    <em class="iconfont iconLower-right"></em>
+                                    <em class="smllqb"></em>
                                 </div>
                             </li>
                             <li>
@@ -329,7 +335,7 @@
                                         <b>胜 3 球</b>
                                         <font>@{{=(Math.min.apply(null, crsOddA3) + '-' + Math.max.apply(null, crsOddA3))}}</font>
                                     </span>
-                                    <em class="iconfont iconLower-right"></em>
+                                    <em class="smllqb"></em>
                                 </div>
                             </li>
                             <li>
@@ -339,7 +345,7 @@
                                         <b>胜更多</b>
                                         <font>@{{=(Math.min.apply(null, crsOddAother) + '-' + Math.max.apply(null, crsOddAother))}}</font>
                                     </span>
-                                    <em class="iconfont iconLower-right"></em>
+                                    <em class="smllqb"></em>
                                 </div>
                             </li>
                         </ul>
@@ -363,7 +369,7 @@
                     <p>盈利金额：￥<span class="profitText">0</span></p>
                     <div class="focusBtn">
                         <!-- <a class="btnDisabled btn-ll" href="javascript:void(0);">奖金优化</a> -->
-                        <a class="Redbtn btntext-red btn-ll" href="javascript:void(0);" action_type="betting">立即投注</a>
+                        <a class="Redbtn btntext-red btn-ll" href="javascript:void(0);" action_type="betting"></a>
                     </div>
                     <i></i>
                 </div>

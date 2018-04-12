@@ -1,4 +1,4 @@
-<div class="game-header pageWrap">
+<!--<div class="game-header pageWrap">
     <div class="headerBox clearfix">
         <span class="cz_logo cz_jczq"></span>
         <h1 jcid="6111"><a href="##">竞彩足球</a></h1>
@@ -16,10 +16,7 @@
             <a href="{!! route('games.focus') !!}" hidefocus="true" target="_self">焦点赛事</a>
             <span class="cz_icon cz_rt">hot<i class="arrowsIcon"></i></span>
         </li>
-        <!-- <li class="{!! ($sPageName == 'rankGames') ? 'active' : '' !!}">
-            <a href="{!! route('games.rank') !!}" hidefocus="true" target="_self">2016欧洲杯</a>
-            <span class="cz_icon cz_rt">hot<i class="arrowsIcon"></i></span>
-        </li> -->
+        
         @if(Session::get('user_id'))
                 <li class="right {!! $sPageName == 'programs' ? 'active' : '' !!}">
                     <a href="{!! route('programs.index', ['sort_down' => 'bought_at']) !!}" hidefocus="true"
@@ -43,8 +40,22 @@
     @if($sPageName != 'focusGames')
     <div class="headerBg"></div>
     @endif
+</div>-->
+<div class="user_header">
+		<div>
+			<ul>
+				<li class="{!! $sPageName == 'games' ? 'usermenu samecolor' : 'usermenu' !!}">
+					<a href="{!! route('games.index') !!}" hidefocus="true">混合投注</a>
+				</li>
+				<li class="{!! $sPageName == 'singleGames' ? 'usermenu samecolor' : 'usermenu' !!}">
+					<a href="{!! route('games.single') !!}" hidefocus="true">单关</a>
+				</li>
+				<li class="{!! $sPageName == 'focusGames' ? 'usermenu samecolor' : 'usermenu' !!}">
+					<a href="{!! route('games.focus') !!}" hidefocus="true" target="_self">焦点赛事</a>
+				</li>
+			</ul>
+		</div>
 </div>
-
 @section('end')
 @parent
 @if(isset($bSimple) && !$bSimple)

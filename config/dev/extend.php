@@ -16,6 +16,8 @@ return array(
             'cssAliases' => array(  //  样式文件别名配置
                   // 框架样式
                   'ui'       => 'css/bootstrap.css',
+                  //header页面
+                  'main'       => 'css/main.css',
                   //游戏页面
                   'gameBase'     => 'imager/base.css',
                   'gameUi'       => 'imager/game/game.css',

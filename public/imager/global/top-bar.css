@@ -13,7 +13,7 @@ body,input,button,textarea,select{-webkit-font-smoothing:antialiased;}
 #header .caret,
 #nav a .caret{display:inline-block;*display:inline;*zoom:1;vertical-align:middle;border-top:4px solid;border-right:4px solid transparent;border-left:4px solid transparent;margin-left:4px;}
 #header{/*height:36px;*/position:relative;z-index:12;font-size:12px;background:#f5f5f5;border-bottom:1px solid #eee;color:#3c3c3c;}
-#header a{color:#6c6c6c;text-decoration:none;}
+#header a{text-decoration:none;}
 #header a:hover{color:#c80000;}
 #header .highlight-color{color:#c80000!important;}
 .top-nav-user,.top-nav-msg,.top-nav-hongbao,.top-nav-discunt,.top-nav-logout{position:relative;float:left;}

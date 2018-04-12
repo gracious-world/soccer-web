@@ -13,7 +13,34 @@
 
 
 @section ('main')
-<div class="nav-bg nav-bg-tab">
+<div class="user_header">
+	<div>
+		<ul>
+		
+			<li class="usermenu">
+				<a href="{!! route('user-transactions.mybonus') !!}"><span>{!! Session::get('is_player') ? '我的加奖' : '我的返点' !!}</span></a>
+			</li>
+		
+			<li class="usermenu">
+				<a href="{!! route('user-transactions.jc-index') !!}"><span>我的投注</span></a>
+			</li>
+			<li class="usermenu">
+				<a href="{!! route('user-transactions.mydeposit',Session::get('user_id')) !!}"><span>我的充值</span></a>
+			</li>
+			<li class="usermenu">
+				<a href="{!! route('user-recharges.index') !!}"><span>充值申请</span></a>
+			</li>
+		
+			<li class="usermenu">
+				<a href="{!! route('user-transactions.mywithdraw',Session::get('user_id')) !!}"><span>我的提现</span></a>
+			</li>
+			<li class="usermenu samecolor" >
+				<a href="{!! route('user-withdrawal.index') !!}"><span>提现申请</span></a>
+			</li>
+		</ul>
+	</div>
+</div>
+<!--<div class="nav-bg nav-bg-tab">
     <div class="title-normal">
         资金明细
     </div>
@@ -21,7 +48,7 @@
         <li class="{!!$reportName=='bonus' ? 'current' : ''!!}">
             <a href="{!! route('user-transactions.mybonus') !!}"><span>{!! Session::get('is_player') ? '我的加奖' : '我的返点' !!}</span></a>
         </li>
-        @if(Session::get('is_player'))
+     @if(Session::get('is_player'))
         <li class="{!!$reportName=='jc-transaction' ? 'current' : ''!!}">
             <a href="{!! route('user-transactions.jc-index') !!}"><span>我的投注</span></a>
         </li>
@@ -31,7 +58,7 @@
         <li class="{!!$reportName=='depositApply' ? 'current' : ''!!}">
             <a href="{!! route('user-recharges.index') !!}"><span>充值申请</span></a>
         </li>
-        @endif
+   @endif
         <li class="{!!$reportName=='withdraw' ? 'current' : ''!!}">
             <a href="{!! route('user-transactions.mywithdraw',Session::get('user_id')) !!}"><span>我的提现</span></a>
         </li>
@@ -39,7 +66,7 @@
             <a href="{!! route('user-withdrawal.index') !!}"><span>提现申请</span></a>
         </li>
     </ul>
-</div>
+</div>-->
 
 <div class="content">
     <div class="area-search">
@@ -63,6 +90,7 @@
                 &nbsp;&nbsp;
                 @endif
                 <input class="btn btn-important" type="submit" value=" 搜 索 " />
+                
             </p>
         </form>
     </div>

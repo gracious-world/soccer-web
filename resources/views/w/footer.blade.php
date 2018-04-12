@@ -1,4 +1,4 @@
-<div class="wrap footer">
+<!--<div class="wrap footer">
     <div class="wrap-inner">
         <p class="text-center">安捷竞彩平台郑重提示:彩票有风险，投注需谨慎！</p>
         {{--
@@ -14,6 +14,19 @@
          --}}
 
     </div>
-</div>
+</div>-->
+<div class="foot">
+				<div>
+					<ul>
+						<li><a href="">关于我们</a></li>
+						<li><a href="">联系我们</a></li>
+						<li><a href="">合作伙伴</a></li>
+						<li><a href="">存款帮助</a></li>
+						<li><a href="">取款帮助</a></li>
+						<li><a href="">常见问题</a></li>
+						<li><a href="">游戏规则</a></li>
+					</ul>
+				</div>
+			</div>
 
 @include('w.notification')
