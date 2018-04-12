@@ -22,6 +22,9 @@ use Hash;
 use Auth;
 use DB;
 use Config;
+use UserRegisterLink;
+use App\Models\User\UserUser;
+use RegisterlinkUser;
 
 class AuthorityController extends Controller {
     protected $request;
@@ -98,7 +101,6 @@ class AuthorityController extends Controller {
                 $iDiffer = $iMaxRetryTimes - $iRetryTimes;
 
                 if ($iDiffer <= 0) {
-
                     //冻结帐号
                     DB::connection()->beginTransaction();
                     $oUser->blocked = User::BLOCK_LOGIN_WITH_PWD_ERROR;
@@ -170,6 +172,7 @@ class AuthorityController extends Controller {
         if ($request->isMethod('POST')) {
             return $this->postSignup();
         }
+
         $sKeyword = trim(Input::get('prize'));
         // pr($sKeyword);exit;
         $oRegisterLink = null;
@@ -177,14 +180,17 @@ class AuthorityController extends Controller {
             $sViewFileName = 'authority.signup';
         } else {
             $oRegisterLink = UserRegisterLink::getRegisterLinkByPrizeKeyword($sKeyword);
+
             if (empty($oRegisterLink) || ($oRegisterLink->is_top && $oRegisterLink->created_count)) {
                 $sReason = '该链接已失效！';
                 return Redirect::route('home')->with('error', '该链接已失效！');
 //                return ('error', '注册失败！' . $sReason);
             }
+
             if (!$oRegisterLink = UserRegisterLink::getRegisterLinkByPrizeKeyword($sKeyword)) {
                 return view('authority.signup')->with(compact('sKeyword', 'oRegisterLink'));
             }
+
             if ($oRegisterLink->is_top) {
                 $sViewFileName = 'authority.signup';
             } else {
@@ -194,6 +200,7 @@ class AuthorityController extends Controller {
                     $sViewFileName = 'authority.reg-d-u';
                 }
             }
+
         }
         // pr($oRegisterLink->toArray());exit;
         // $sKeyword or $sKeyword = 'experience';
@@ -226,7 +233,7 @@ class AuthorityController extends Controller {
         $aData['is_tester'] = 0;//都不是测试用户
         DB::connection()->beginTransaction();
 
-        if (!UserUser::createUserDirect($aData, $oRegisterLink->user_id, $oRegisterLink->id, false, $oUser, $iErrno, $sErrMsg)) {
+        if (!UserUser::createUserDirect($aData, Session::get('user_id'), null, false, $oUser, $iErrno, $sErrMsg)) {
 
             DB::connection()->rollback();
             $this->langVars['resource'] = __('_model.user');
@@ -247,21 +254,20 @@ class AuthorityController extends Controller {
             return $this->goBack('error', __('_basic.create-fail', $this->langVars));
         }
         //add end
-
         $oRegisterLink->updateCreateCount();
         DB::connection()->commit();
 
         //add start 注册用户推送活动队列 2016-01-12 damon
-        BaseTask::addTask('RegisterActivity', ['user_id' => $oUser->id, 'register_link_id' => $oRegisterLink->id], 'activity');
+//        BaseTask::addTask('RegisterActivity', ['user_id' => $oUser->id, 'register_link_id' => $oRegisterLink->id], 'activity');
         //add end
         //给用户发送一封激活邮件
         $sRegisterMail = $oUser->email;
-        // $oUser->sendActivateMail();
+        $oUser->sendActivateMail();
         $oUser->is_tester or BaseTask::addTask('StatUpdateRegisterCountOfProfit', ['date' => $oUser->register_at, 'user_id' => $oUser->id], 'stat');
         BaseTask::addTask('EventTaskQueue', ['event' => 'auth.regist', 'user_id' => $oUser->id, 'data' => []], 'activity');
-
-        return View::make('authority.signupSuccess')->with(compact('sRegisterMail'));
+        return view('authority.signupSuccess');
     }
+
 
 
     private function checkData(&$aData, & $oRegisterLink, & $sErrorMsg) {
@@ -310,11 +316,11 @@ class AuthorityController extends Controller {
             return false;
         }
 
-        $oRegisterLink = UserRegisterLink::getRegisterLinkByPrizeKeyword($aData['prize']);
-        if (empty($oRegisterLink) || ($oRegisterLink->is_top && $oRegisterLink->created_count)) {
-            $sErrorMsg = '注册失败！推广码无效！';
-            return false;
-        }
+//        $oRegisterLink = UserRegisterLink::getRegisterLinkByPrizeKeyword($aData['prize']);
+//        if (empty($oRegisterLink) || ($oRegisterLink->is_top && $oRegisterLink->created_count)) {
+//            $sErrorMsg = '注册失败！推广码无效！';
+//            return false;
+//        }
 
         return true;
     }
@@ -436,6 +442,69 @@ class AuthorityController extends Controller {
         $aTerminalConfig = Config::get('terminal');
         Session::put('terminal_id', $aTerminalConfig['id']);
         Session::put('terminal_key', $aTerminalConfig['key']);
+    }
+
+    /**
+     * [validateEmailExist 验证邮箱是否存在]
+     * @return [Boolean] [true: 存在, false: 不存在]
+     */
+    private function validateEmailExist(& $sErrorMsg) {
+        $sEmail = trim(Input::get('email'));
+        // $sPassword = trim(Input::get('password'));
+        if (!$sEmail) {
+            $sErrorMsg = '请填写邮箱！';
+            return true;
+        } else if (User::checkEmailExist($sEmail)) {
+            $sErrorMsg = '该邮箱已被注册，请重新输入！';
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * [renderReturn 响应函数]
+     * @param  [Boolean] $bSucc [是否成功]
+     * @param  [String] $sDesc [响应描述]
+     * @return [Response]        [响应]
+     */
+    public function renderReturn($bSucc, $sDesc) {
+        // pr($this->model->validationErrors);exit;
+        if ($bSucc) {
+            return $this->goBack('success', $sDesc);
+        } else {
+            return $this->goBack('error', $sDesc);
+        }
+    }
+
+    /**
+     * go back
+     * @param String $sMsgType in list: success, error, warning, info
+     * @param String $sMessage
+     * @return RedirectResponse
+     */
+    protected function goBack($sMsgType, $sMessage, $bWithModelErrors = false)
+    {
+//        $oRedirectResponse = Session::get($this->redictKey) ? Redirect::back() : Redirect::route('home');
+        $oRedirectResponse = Redirect::back();
+        $oRedirectResponse->withInput()->with($sMsgType, $sMessage);
+        !$bWithModelErrors or $oRedirectResponse = $oRedirectResponse->withErrors($this->model->validationErrors);
+        return $oRedirectResponse;
+    }
+
+    /**
+     * [validateUsernameExist 验证用户名是否存在]
+     * @return [Boolean] [true: 存在, false: 不存在]
+     */
+    private function validateUsernameExist(& $sErrorMsg) {
+        $sUsername = trim(Input::get('username'));
+        if (!$sUsername) {
+            $sErrorMsg = '请填写用户名！';
+            return false;
+        } else if (User::checkUsernameExist($sUsername)) {
+            $sErrorMsg = '该用户名已被注册，请重新输入！';
+            return false;
+        }
+        return true;
     }
 
 }

@@ -3,10 +3,12 @@
     <div class="title-normal">团队管理</div>
     <ul class="tab-title clearfix">
 {{--        @if($iUserLevel != 0 && $iUserLevel!=1)--}}
-        <li class="{!!$sCurrentRoute=="users.accurate-create"?"current":null!!}"><a href="{!!route("users.accurate-create")!!}"><span>注册下级</span></a></li>
-            <!--
-    <li class="{!!$sCurrentRoute=="user-links.create" ?"current":null!!}"><a href="{!!route("user-links.create")!!}"><span>下级推广码</span></a></li>
-    -->
+        <li class="{!!$sCurrentRoute=="users.accurate-create"?"current":null!!}"><a href="{!!route("users.accurate-create")!!}"><span>精准开户</span></a></li>
+
+ <li class="{!!$sCurrentRoute=="user-links.create"?"current":null!!}"><a href="{!!route("user-links.create")!!}"><span>链接开户</span></a></li>
+
+    {{--<li class="{!!$sCurrentRoute=="user-links.create" ?"current":null!!}"><a href="{!!route("user-links.create")!!}"><span>下级推广码</span></a></li>--}}
+
 
         {{--@endif--}}
 {{--        @if($iUserLevel != 0)--}}

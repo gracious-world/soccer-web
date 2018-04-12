@@ -19,6 +19,8 @@ use App\Models\Lotteries\PercentWay;
 use Illuminate\Support\Facades\DB;
 use UserTool;
 use App\Models\BaseTask;
+use App\Models\User\UserAccountQuota;
+
 /**
  * 用户管理(代理用户才有)
  */
@@ -106,54 +108,14 @@ class UserUserController extends UserBaseController {
                 break;
             case 'accurateCreate':
                 $iUserId = Session::get('user_id');
-                $aLotteriesPrizeSets = UserPrizeSet::generateLotteriesPrizeWithSeries($iUserId);
                 $oUser = User::find($iUserId);
-                $this->setVars('currentUserPrizeGroup', $oUser->prize_group);
                 $this->setVars('bUseQuota', SysConfig::readValue('use_quota'));
-                // 获取玩家的奖金组范围
-                $iPlayerMaxPrizeGroup = Sysconfig::readValue('player_max_grize_group');
-                $aCurrentPrizeGroups = $aLotteriesPrizeSets[0]['children'][0];              // TODO 链接开户的奖金组选择，页面设计里没有体现时时彩和乐透彩的区别，先用时时彩
-                $iSeriesId = $aCurrentPrizeGroups['series_id']; // TODO 链接开户的奖金组选择，页面设计里没有体现时时彩和乐透彩的区别，先用时时彩
-                $iPlayerMinPrizeGroupRange = abs(SysConfig::readValue('min_diff_between_player_agent'));
-                if ($iPlayerMaxPrizeGroup < $aCurrentPrizeGroups['classic_prize']) {
-                    $iCurrentPrize = $iPlayerMaxPrizeGroup;
-                    $bInclude = true;
-                } else {
-                    $bInclude = false;
-                    $iCurrentPrize = $aCurrentPrizeGroups['classic_prize'];
-                }
-                $iPlayerMinPrizeGroup = Sysconfig::readValue('player_min_grize_group');
-                // 获取低于当前代理奖金组的玩家可能的6个奖金组
-                $iMaxPlayerGroup = $iCurrentPrize - $iPlayerMinPrizeGroupRange;
-                $oPossiblePrizeGroups = PrizeGroup::getPrizeGroupsBelowExistGroup($iMaxPlayerGroup, $iSeriesId, 8, $iPlayerMinPrizeGroup, 'desc', true);
+                $oUserAccountQuota = UserAccountQuota::getUserAccountQuota($iUserId);
 
-                $oAllPossiblePrizeGroups = PrizeGroup::getPrizeGroupsBelowExistGroup($iCurrentPrize, $iSeriesId, null, $iPlayerMinPrizeGroup, 'asc', true);
-
-                // 如果是总代开户，获取代理的奖金组范围
-                $oPossibleAgentPrizeGroups = [];
-                if (Session::get('is_agent')) {
-                    $iAgentMaxPrizeGroup = Sysconfig::readValue('agent_max_grize_group');
-                    $aCurrentPrizeGroups = $aLotteriesPrizeSets[0]['children'][0];              // TODO 链接开户的奖金组选择，页面设计里没有体现时时彩和乐透彩的区别，先用时时彩
-                    if ($iAgentMaxPrizeGroup < $aCurrentPrizeGroups['classic_prize']) {
-                        $iAgentCurrentPrize = $iAgentMaxPrizeGroup;
-                    } else {
-                        $iAgentCurrentPrize = $aCurrentPrizeGroups['classic_prize'];
-                    }
-                    $iAgentMinPrizeGroup = Sysconfig::readValue('agent_min_grize_group');
-                    $oPossibleAgentPrizeGroups = PrizeGroup::getPrizeGroupsBelowExistGroup($iAgentCurrentPrize, $iSeriesId, 8, $iAgentMinPrizeGroup, 'desc', Session::get('is_top_agent'));
-                    $oAllPossibleAgentPrizeGroups = PrizeGroup::getPrizeGroupsBelowExistGroup($iAgentCurrentPrize, $iSeriesId, null, $iAgentMinPrizeGroup, 'asc', Session::get('is_top_agent'));
-                    $aUserAllPrizeSetQuota = UserPrizeSetQuota::getUserAllPrizeSetQuota($iUserId);
-                }
-                $aDefaultMaxPrizeGroups = RegisterLink::$aDefaultMaxPrizeGroups;
-                $aDefaultPrizeGroups = RegisterLink::$aDefaultPrizeGroups;
-                $bUseGroupQuota = SysConfig::get('use_group_quota');
-
-                $this->setVars(compact('oAllPossibleAgentPrizeGroups', 'oAllPossiblePrizeGroups', 'aUserAllPrizeSetQuota'));
-                $this->setVars(compact('oPossiblePrizeGroups', 'oPossibleAgentPrizeGroups', 'aLotteriesPrizeSets', 'iAgentCurrentPrize', 'iCurrentPrize', 'aDefaultPrizeGroups', 'aDefaultMaxPrizeGroups', 'iAgentMinPrizeGroup', 'iPlayerMinPrizeGroup', 'bUseGroupQuota'));
                 //获取当前用户返点
                 $fUserSinglePercentValue = UserPercentSet::getPercentValueByUser($iUserId, UserPercentSet::$iFootBallLotteryId, PercentWay::$jcWays['single']);
                 $fUserMultiPercentValue = UserPercentSet::getPercentValueByUser($iUserId, UserPercentSet::$iFootBallLotteryId, PercentWay::$jcWays['multi']);
-                $this->setVars(compact('fUserSinglePercentValue', 'fUserMultiPercentValue'));
+                $this->setVars(compact('fUserSinglePercentValue', 'fUserMultiPercentValue','oUserAccountQuota','oUser'));
                 break;
         }
     }
@@ -456,7 +418,7 @@ class UserUserController extends UserBaseController {
      * @return [Response] [description]
      */
     public function accurateCreate() {
-        $this->view = 'userCenter.teamManager.openAccount';
+//        $this->view = 'userCenter.teamManager.openAccount';
         if (Request::method() == 'POST') {
             return $this->doCreate();
         }

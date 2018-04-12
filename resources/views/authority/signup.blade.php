@@ -18,13 +18,13 @@
     <div class="box-register">
         <h2>欢迎注册安捷竞彩平台</h2>
         <form action="{!! route('signup') !!}" method="post" id="signupForm">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <input type="hidden" name="_random" value="{{ Tool::createRandomStr() }}">
-            <div class="clearfix oneLine">
-                <div class="f-2 label">推广码：</div>
-                <div class="f-3"><input type="text" name="prize" class="input" id="code"></div>
-                <div class="f-5 light" id="codeError">请填写上级的推广码</div>
-            </div>
+            <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+            <input type="hidden" name="_random" value="{!! Tool::createRandomStr() !!}">
+            {{--<div class="clearfix oneLine">--}}
+                {{--<div class="f-2 label">推广码：</div>--}}
+                {{--<div class="f-3"><input type="text" name="prize" class="input" id="code"></div>--}}
+                {{--<div class="f-5 light" id="codeError">请填写上级的推广码</div>--}}
+            {{--</div>--}}
             <div class="clearfix oneLine">
                 <div class="f-2 label">用户名：</div>
                 <div class="f-3"><input type="text" name="username" class="input" id="userName" ></div>
@@ -59,7 +59,7 @@
                 <div class="f-2 label">验证码：</div>
                 <div class="f-1"><input type="text" name="captcha" class="input" id="checkCode"></div>
                 <div class="f-0">
-                    <a class="verify" href="javascript:changeCaptcha();" title="{{ Lang::get('transfer.Captcha') }}">
+                    <a id='captcha_a' class="verify" href="javascript:changeCaptcha();" title="{{ Lang::get('transfer.Captcha') }}">
                         {!! Captcha::img() !!}
                     </a>
                  </div>
@@ -110,7 +110,7 @@
  @parent
 <script type="text/javascript">
 function changeCaptcha() {
-    document.getElementById('captchaImg').src = "{{ URL::to('captcha?') }}" + ((Math.random() * 9 + 1) * 100000).toFixed(0);
+    $('#captcha_a img').attr('src',  "{!! URL::to('captcha?') !!}" + ((Math.random() * 9 + 1) * 100000).toFixed(0));
 };
 
 $('#signupForm .light').each(function() {
@@ -215,15 +215,8 @@ var validataFunc = function() {
             sourceDom: loginPwd,
             errorMsgDom: loginPwdError
         }
-    }, {
-        strategy: 'canNotEqual',
-        option: {
-            errorMsg: '不能和资金密码相同',
-            sourceDom: loginPwd,
-            compareDom: fundsPwd,
-            errorMsgDom: loginPwdError
-        }
-    }]);
+    }
+    ]);
 
     //确认密码
     validator.add(confirmPwd, [{
@@ -244,7 +237,7 @@ var validataFunc = function() {
     }]);
 
     //资金密码
-    validator.add(fundsPwd, [{
+    /*validator.add(fundsPwd, [{
         strategy: 'isNonEmpty',
         option: {
             errorMsg: '资金密码不能为空',
@@ -291,10 +284,10 @@ var validataFunc = function() {
             errorMsgDom: fundsPwdError
         }
     }]);
-
+*/
 
     //确认资金密码
-    validator.add(refundsPwd, [{
+    /*validator.add(refundsPwd, [{
         strategy: 'isNonEmpty',
         option: {
             errorMsg: '确认资金密码不能为空',
@@ -309,7 +302,7 @@ var validataFunc = function() {
             compareDom: fundsPwd,
             errorMsgDom: refundsPwdError
         }
-    }]);
+    }]);*/
 
     //邮箱
     validator.add(email, [{

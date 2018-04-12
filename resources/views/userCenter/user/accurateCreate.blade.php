@@ -9,7 +9,7 @@
 @parent
     {!! script('gagame.DatePicker') !!}
     {!! script('gagame.Tab') !!}
-    {!! script('gagame.SliderBar') !!}
+{{--    {!! script('gagame.SliderBar') !!}--}}
 @stop
 @section('main')
 <div class="nav-bg nav-bg-tab">
@@ -73,14 +73,47 @@
             </div>
         </div>
 
+        <div class="item-detail item-detail-hover agent-user-limit J-agent-user-limit">
+            <div class="item-title">
+                <i class="item-icon-3"></i>设置开户配额
+            </div>
+            <div class="item-info">
+                <p>通过此链接注册的用户最多配额如下</p>
+                <input type="text" class="input" data-quota="{{$oUserAccountQuota->left_quota}}" value="0">
+                <p>最大允许<span class="quota-max">{{$oUserAccountQuota->left_quota}}</span></p>
+            </div>
+        </div>
+
+          <div class="item-detail item-detail-hover user-bonus-choose">
+            <div class="item-title">
+                <i class="item-icon-4"></i>竞彩游戏返点
+            </div>
+
+            <div class="bonusgroup-game-type clearfix ">
+                <div class="bonusgroup-fb-list">
+                    <h3>竞彩足球</h3>
+                    <ul>
+                        <li class="">
+                            <label>单关返点：</label>
+                            <input type="text" id="J-input-fb-s" name="fb_single" class="input J-football-input input-big w-1" value="0.0" max-data="{{$fUserSinglePercentValue}}" >%
+                            <span>一共有 <i>{{$fUserSinglePercentValue}}</i> % ，可以分配</span>
+                        </li>
+                        <li class="">
+                            <label>混合过关：</label>
+                            <input type="text" id="J-input-fb-a" name="fb_all" class="input J-football-input input-big w-1" value="0.0" max-data="{{$fUserMultiPercentValue}}" >%
+                            <span>一共有 <i>{{$fUserMultiPercentValue}}</i> % ，可以分配</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
         <div class="bonus-config-result">
             <strong>账号设置结果：</strong>
             <label>账户类型<span class="J-user-type">----</span></label>
-            <!--
-            <label>数字彩奖金组<span class="J-init-bonusgroup"></span></label>
+            {{--<label>数字彩奖金组<span class="J-init-bonusgroup">----</span></label>--}}
             <label>竞彩单关<span class="J-input-fb-s">0.0</span>%</label>
             <label>竞彩串关<span class="J-input-fb-a">0.0</span>%</label>
-            -->
 
         </div>
 
@@ -114,9 +147,9 @@ var dataInfo = ['',''];//数据缓存
 
 var prizeGroupUrl = "{!! route('user-user-prize-sets.prize-set-detail') !!}"  ; //查看奖金组连接缓存
 // 代理奖金组数据
-var agentPrizeGroup = {!!$oAllPossibleAgentPrizeGroups!!};
+{{--var agentPrizeGroup = {!!$oAllPossibleAgentPrizeGroups!!};--}}
 //玩家奖金组数据
-var playerPrizeGroup = {!!$oAllPossiblePrizeGroups!!};
+{{--var playerPrizeGroup = {!!$oAllPossiblePrizeGroups!!};--}}
 
 //判断用户角色滑动控件初始化方法
 var checkSlider =function (){
@@ -145,7 +178,7 @@ var switchUser =function(){
             $('#J-panel-group-agent').show();
             $('.J-bonusgroup-player').hide();
             $('.J-bonusgroup-agent').show();
-            $('.J-agent-user-limit').show();
+            // $('.J-agent-user-limit').show();
         }else{
         // 玩家
             userModel = 'player';
@@ -153,7 +186,7 @@ var switchUser =function(){
             $('#J-panel-group-agent').hide();
             $('.J-bonusgroup-player').show();
             $('.J-bonusgroup-agent').hide();
-            $('.J-agent-user-limit').hide();
+            // $('.J-agent-user-limit').hide();
         }
         // clearChooseGroup();
         checkSlider();
@@ -161,146 +194,146 @@ var switchUser =function(){
     }).eq(0).trigger('click');
 };
 
-
-//自定义奖金组设置组件
-var bindAllSlider = function ($parent){
-    var sliderConfig = {
-        // 'isUpOnly' : true,
-        'minDom'   : '[data-slider-sub]',
-        'maxDom'   : '[data-slider-add]',
-        'contDom'  : '[data-slider-cont]',
-        'handleDom': '[data-slider-handle]',
-        'innerDom' : '[data-slider-inner]',
-        'minNumDom': '[data-slider-min]',
-        'maxNumDom': '[data-slider-max]'
-    };
-    $('.bonusgroup-list', $parent).each(function(idx){
-        var $this = $(this),
-            globalSlider, // 统一设置slider
-            sliders = []; // 分段设置slider
-        if( $parent.hasClass('J-bonusgroup-agent') ){
-            var bonusData = agentPrizeGroup;
-        }else{
-            var bonusData = playerPrizeGroup;
-        }
-        $this.find('.slider-range').each(function(_idx){
-            var $that = $(this),
-                settings = $.extend({}, sliderConfig, {
-                    'parentDom': $that,
-                    'step'     : 1,
-                    'minBound' : 0,
-                    'maxBound' : bonusData.length - 1,
-                    'value'    : 0
-                });
-            if( $that.hasClass('slider-range-global') ){
-                globalSlider = new gagame.SliderBar( settings );
-            }else{
-                sliders.push(new gagame.SliderBar( settings ));
-            }
-        });
-        // 全局设置
-        if( globalSlider ){
-            globalSlider.addEvent('change', function(){
-                var value = this.getValue(),
-                    $parent = this.getDom();
-                $.each(sliders, function(i,s){
-                    if( s && s.setValue ){
-                        s.setValue(value);
-                    }
-                });
-                // 设置返奖率
-                var maxBound = bonusData[this.maxBound]['classic_prize'],
-                    nowBound = bonusData[value]['classic_prize'];
-                var rate = ( maxBound - nowBound ) / 2000;
-                $parent.find('[data-slider-percent]').text((rate*100).toFixed(2) +'%');
-                // 设置值
-                $parent.find('[data-slider-value]').text(nowBound);
-                $('#J-input-prize').val(nowBound);
-                // 设置平均返点率
-                $('.J-init-bonusgroup').text(nowBound);
-                if( userModel == 'agent' ){
-                    checkQuotaLimitStatus(nowBound);
-                }
-                // 设置奖金组详情连接
-                setWinGroupUrl($parent.find('[data-bonus-scan]'), nowBound, $parent.attr('data-id'));
-                // $parent.find('[data-bonus-scan]').attr('href', prizeGroupUrl + '/' +nowBound+ '/'+ ($parent.attr('data-id')) );
-            });
-            globalSlider.setValue(0);
-        }
-    });
-    sliderEventBinded = true;
-}
-
-//查看奖金组详情
-var setWinGroupUrl = function( t, bonus, gameId){
-    var el = $(t), param = '', arr = [];
-    if( bonus ) arr.push(bonus);
-    if( gameId ) arr.push(gameId);
-    if( arr.length ) param = arr.join('/');
-    var url = prizeGroupUrl + '/' + param;
-    el.attr('href', url);
-};
+//
+// //自定义奖金组设置组件
+// var bindAllSlider = function ($parent){
+//     var sliderConfig = {
+//         // 'isUpOnly' : true,
+//         'minDom'   : '[data-slider-sub]',
+//         'maxDom'   : '[data-slider-add]',
+//         'contDom'  : '[data-slider-cont]',
+//         'handleDom': '[data-slider-handle]',
+//         'innerDom' : '[data-slider-inner]',
+//         'minNumDom': '[data-slider-min]',
+//         'maxNumDom': '[data-slider-max]'
+//     };
+//     $('.bonusgroup-list', $parent).each(function(idx){
+//         var $this = $(this),
+//             globalSlider, // 统一设置slider
+//             sliders = []; // 分段设置slider
+//         if( $parent.hasClass('J-bonusgroup-agent') ){
+//             var bonusData = agentPrizeGroup;
+//         }else{
+//             var bonusData = playerPrizeGroup;
+//         }
+//         $this.find('.slider-range').each(function(_idx){
+//             var $that = $(this),
+//                 settings = $.extend({}, sliderConfig, {
+//                     'parentDom': $that,
+//                     'step'     : 1,
+//                     'minBound' : 0,
+//                     'maxBound' : bonusData.length - 1,
+//                     'value'    : 0
+//                 });
+//             if( $that.hasClass('slider-range-global') ){
+//                 globalSlider = new gagame.SliderBar( settings );
+//             }else{
+//                 sliders.push(new gagame.SliderBar( settings ));
+//             }
+//         });
+//         // 全局设置
+//         if( globalSlider ){
+//             globalSlider.addEvent('change', function(){
+//                 var value = this.getValue(),
+//                     $parent = this.getDom();
+//                 $.each(sliders, function(i,s){
+//                     if( s && s.setValue ){
+//                         s.setValue(value);
+//                     }
+//                 });
+//                 // 设置返奖率
+//                 var maxBound = bonusData[this.maxBound]['classic_prize'],
+//                     nowBound = bonusData[value]['classic_prize'];
+//                 var rate = ( maxBound - nowBound ) / 2000;
+//                 $parent.find('[data-slider-percent]').text((rate*100).toFixed(2) +'%');
+//                 // 设置值
+//                 $parent.find('[data-slider-value]').text(nowBound);
+//                 $('#J-input-prize').val(nowBound);
+//                 // 设置平均返点率
+//                 $('.J-init-bonusgroup').text(nowBound);
+//                 if( userModel == 'agent' ){
+//                     checkQuotaLimitStatus(nowBound);
+//                 }
+//                 // 设置奖金组详情连接
+//                 setWinGroupUrl($parent.find('[data-bonus-scan]'), nowBound, $parent.attr('data-id'));
+//                 // $parent.find('[data-bonus-scan]').attr('href', prizeGroupUrl + '/' +nowBound+ '/'+ ($parent.attr('data-id')) );
+//             });
+//             globalSlider.setValue(0);
+//         }
+//     });
+//     sliderEventBinded = true;
+// }
+//
+// //查看奖金组详情
+// var setWinGroupUrl = function( t, bonus, gameId){
+//     var el = $(t), param = '', arr = [];
+//     if( bonus ) arr.push(bonus);
+//     if( gameId ) arr.push(gameId);
+//     if( arr.length ) param = arr.join('/');
+//     var url = prizeGroupUrl + '/' + param;
+//     el.attr('href', url);
+// };
 
 // 配额输入验证
-var bindQuotaInput = function(){
-    $('input[data-quota]').on('change', function(){
-        var $this = $(this),
-            val = parseInt( $this.val() ) || 0,
-            max = parseInt( $this.data('quota') );
-        if( val < 1 ){
-            val = 0;
-        }else if( val > max ){
-            val = max
-        }
-        $this.val(val);
-    });
-};
+// var bindQuotaInput = function(){
+//     $('input[data-quota]').on('change', function(){
+//         var $this = $(this),
+//             val = parseInt( $this.val() ) || 0,
+//             max = parseInt( $this.data('quota') );
+//         if( val < 1 ){
+//             val = 0;
+//         }else if( val > max ){
+//             val = max
+//         }
+//         $this.val(val);
+//     });
+// };
 
 // 通过奖金组来判断某配额设置是否显示
-var checkQuotaLimitStatus = function( prize ){
-    var prizeGroup = parseInt( prize ) || 0,
-        showNum = 0;
-    $('input[data-quota]').each(function(){
-        var prize = $(this).data('prize'),
-            quota = $(this).data('quota');
-        // console.log(prize, prizeGroup)
-        // if( prize < prizeGroup || (isTopAgent && prize == prizeGroup) ){
-        if( prize < prizeGroup ){
-            $(this).parent().show();
-            showNum++;
-        }else{
-            $(this).parent().hide();
-        }
-        // if( prize == prizeGroup && !isTopAgent ){
-        if( prize == prizeGroup ){
-            $(this).siblings('p').find('.quota-max').text(Math.max(quota-1, 0));
-        }else{
-            $(this).siblings('p').find('.quota-max').text(quota);
-        }
-    });
-    if( showNum > 0 && userModel == 'agent' ){
-        $('.J-agent-user-limit').show();
-    }else{
-        $('.J-agent-user-limit').hide();
-    }
-}
+// var checkQuotaLimitStatus = function( prize ){
+//     var prizeGroup = parseInt( prize ) || 0,
+//         showNum = 0;
+//     $('input[data-quota]').each(function(){
+//         var prize = $(this).data('prize'),
+//             quota = $(this).data('quota');
+//         // console.log(prize, prizeGroup)
+//         // if( prize < prizeGroup || (isTopAgent && prize == prizeGroup) ){
+//         if( prize < prizeGroup ){
+//             $(this).parent().show();
+//             showNum++;
+//         }else{
+//             $(this).parent().hide();
+//         }
+//         // if( prize == prizeGroup && !isTopAgent ){
+//         if( prize == prizeGroup ){
+//             $(this).siblings('p').find('.quota-max').text(Math.max(quota-1, 0));
+//         }else{
+//             $(this).siblings('p').find('.quota-max').text(quota);
+//         }
+//     });
+//     if( showNum > 0 && userModel == 'agent' ){
+//         $('.J-agent-user-limit').show();
+//     }else{
+//         $('.J-agent-user-limit').hide();
+//     }
+// }
 
 // 获取当前配额设置数据对象
-var getQuotaData = function(){
-    // 只有代理才有配额设定，所以可以直接指定获取该DOM的value值，作为最大奖金组
-    var prizeGroup = parseInt( $('#J-input-prize').val() ),
-        // 代理用户配额限制数据变量
-        dataObj = {};
-    $('input[data-quota]:visible').each(function(){
-        var quota = $(this).val(),
-            prize = $(this).data('prize');
-        // if( prize < prizeGroup || (isTopAgent && prize == prizeGroup) ){
-        if( prize < prizeGroup ){
-            dataObj[prize] = quota;
-        }
-    });
-    return dataObj;
-};
+// var getQuotaData = function(){
+//     // 只有代理才有配额设定，所以可以直接指定获取该DOM的value值，作为最大奖金组
+//     var prizeGroup = parseInt( $('#J-input-prize').val() ),
+//         // 代理用户配额限制数据变量
+//         dataObj = {};
+//     $('input[data-quota]:visible').each(function(){
+//         var quota = $(this).val(),
+//             prize = $(this).data('prize');
+//         // if( prize < prizeGroup || (isTopAgent && prize == prizeGroup) ){
+//         if( prize < prizeGroup ){
+//             dataObj[prize] = quota;
+//         }
+//     });
+//     return dataObj;
+// };
 
 //联系qq-tip
 var inputTipFun = function(){
@@ -444,7 +477,7 @@ $(function(){
     switchUser();
     inputTipFun();
     openWindow();
-    bindQuotaInput();
+    // bindQuotaInput();
     football();
 
     //表单提交
@@ -465,18 +498,18 @@ $(function(){
             fbaVal =$.trim($('#J-input-fb-a').val()),
             fbsVal =$.trim($('#J-input-fb-s').val());
 
-        var lotteryPrizeGroupCache = {},seriesPrizeGroupCache = {};
-
-            seriesPrizeGroupCache[1] = $('#J-input-prize').val() || $('.J-bonusgroup-agent .slider-current-value').text();
-
-        console.log(seriesPrizeGroupCache);
-
-        var lotteriesJsonData = JSON.stringify(lotteryPrizeGroupCache),
-            seriesJsonData    = JSON.stringify(seriesPrizeGroupCache),
-            agentQuotaLimitJson = JSON.stringify( getQuotaData() );
-            if (lotteriesJsonData != '{}') $('#J-input-lottery-json').val(seriesJsonData);
-            if (seriesJsonData    != '{}') $('#J-input-series-json').val(seriesJsonData);
-            $('#J-agent-quota-limit-json').val(agentQuotaLimitJson);
+        // var lotteryPrizeGroupCache = {},seriesPrizeGroupCache = {};
+        //
+        //     seriesPrizeGroupCache[1] = $('#J-input-prize').val() || $('.J-bonusgroup-agent .slider-current-value').text();
+        //
+        // console.log(seriesPrizeGroupCache);
+        //
+        // var lotteriesJsonData = JSON.stringify(lotteryPrizeGroupCache),
+        //     seriesJsonData    = JSON.stringify(seriesPrizeGroupCache),
+        //     agentQuotaLimitJson = JSON.stringify( getQuotaData() );
+        //     if (lotteriesJsonData != '{}') $('#J-input-lottery-json').val(seriesJsonData);
+        //     if (seriesJsonData    != '{}') $('#J-input-series-json').val(seriesJsonData);
+        //     $('#J-agent-quota-limit-json').val(agentQuotaLimitJson);
         // return false;
         if(userName == ''){
             alert('请输入登录账号');
