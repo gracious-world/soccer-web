@@ -9,6 +9,7 @@ use Config;
 use DB;
 use App\Models\User\UserPercentSet;
 use App\Models\Lotteries\PercentWay;
+use App\Models\User\RegisterLink;
 
 # 链接开户管理
 class UserRegisterLinkController extends UserBaseController {

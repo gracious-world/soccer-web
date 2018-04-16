@@ -28,12 +28,15 @@ use RegisterlinkUser;
 
 class AuthorityController extends Controller {
     protected $request;
+        private $blockFunctionalityId = 1524;
+    private $blockFunctionalityTitle = 'Block User';
+
     /**
      * 页面：登录
      * @return Response
      */
     public function signin(Request $request) {
-//        var_dump(Hash::make(md5(md5(md5('toptop123qwe')))));
+//        var_dump(Hash::make(md5(md5(md5('best2014123qwe')))));
 //        exit;
         if ($request->isMethod('POST')) {
             return $this->postSignin($request);
@@ -105,6 +108,7 @@ class AuthorityController extends Controller {
                     DB::connection()->beginTransaction();
                     $oUser->blocked = User::BLOCK_LOGIN_WITH_PWD_ERROR;
                     if ($bSucc = $oUser->save()) {
+
                         $bSucc = UserManageLog::createLog($oUser->id, $this->blockFunctionalityId, $this->blockFunctionalityTitle, __('_user.block-login-with-pwd-error'));
                     }
 

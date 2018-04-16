@@ -12,6 +12,7 @@ use App\Models\AppUser\UserDeposit;
 use App\Models\Payment\PaymentAccount;
 use App\Models\User\User;
 use App\Models\User\UserBankCard;
+use App\Models\Basic\Bank;
 
 use App\Models\Fund\Deposit;
 use Illuminate\Support\Facades\Redirect;

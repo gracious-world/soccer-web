@@ -147,6 +147,18 @@ class UserWithdrawalController extends UserBaseController {
         if (Request::method() != 'POST' || $this->params['step'] != 1){
             return Redirect::route('user-withdrawal.index')->with('error', __('_basic.data-error', $this->langVars));
         }
+
+        if(!isset($this->params['amount']) || $this->params['amount'] == 0){
+            return $this->goBack('error', __('_withdrawal.withdrawal-failed',['reason'=>'提现金额不对'] ));
+        }
+
+        $iUserId = Session::get('user_id');
+        $oAccount = Account::getAccountInfoByUserId($iUserId);
+        if($this->params['amount'] > $oAccount->withdrawable) {
+            return $this->goBack('error', __('_withdrawal.withdrawal-failed', ['reason' => '可提现余额不够']));
+        }
+
+
 //            Session::put(self::WITHDRAWAL_STATUS, 1);
         $this->action = 'confirm';
         $iCardId = trim(Input::get('id'));

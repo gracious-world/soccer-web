@@ -24,14 +24,16 @@ class StationLetterController extends UserBaseController {
             $oUser = UserUser::find(Session::get('user_id'));
             $aParent = null;
             $aChildren = null;
+
             if (! Session::get('is_top_agent') && $oUser->getDirectParent()) /**/{
                 $aParent = $oUser->getDirectParent()->toArray();
                 $aParent['username'] = '直属上级';
             }
+
             if (! Session::get('is_player') && $oUser->getUsersBelongsToAgent()) {
                 $aChildren = $oUser->getUsersBelongsToAgent()->toArray();
-
             }
+
             $sJsonParent = json_encode([$aParent]);
             $sJsonChildren = json_encode($aChildren);
             $this->setVars(compact('sJsonParent', 'sJsonChildren', 'aParent'));
