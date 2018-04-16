@@ -64,6 +64,7 @@ class AuthorityController extends Controller {
         Session::forget($aRandom[0]);
         // 如果没有设置锁定帐号.则验证 验证码.默认前3次登录不用验证码, 3次登录失败后需要验证码, 登录成功则清空登录次数
         if (isset($iLoginTimes) && ($iLoginTimes > $iMaxCleanLoginTimes)) {
+            //TODO comment out
             // 验证码校验
 //            if (!$this->validateCaptcha($sErrorMsg)) {
 //                return $this->goBackForAttempt($sErrorMsg);
