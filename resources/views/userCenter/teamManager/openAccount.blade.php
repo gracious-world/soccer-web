@@ -18,7 +18,7 @@
 <div class="wrap-inner main">
     @include("userCenter.teamManager.teamHeader")
     <div class="box-register box-register-border">
-        <form action="{{route("users.accurate-create")}}" method="post" id="signupForm">
+        <form action="{!!route("users.accurate-create")!!}" method="post" id="signupForm">
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
             <input type="hidden" name="_random" value="{!! Tool::createRandomStr() !!}">
 

@@ -16,11 +16,9 @@
 <div class="nav-bg nav-bg-tab">
     <div class="title-normal">团队管理</div>
     <ul class="tab-title clearfix">
-        @if(Session::get('user_level') == 2)
         <li><a href="{!! route('users.accurate-create') !!}" ><span>精准开户</span></a></li>
         <li><a href="{!! route('user-links.create') !!}"><span>链接开户</span></a></li>
         <li><a href="{!! route('user-links.index') !!}"><span>链接管理</span></a></li>
-        @endif
         <li class="current"><a href="{!! route('users.index') !!}"><span>用户列表</span></a></li>
     </ul>
 </div>

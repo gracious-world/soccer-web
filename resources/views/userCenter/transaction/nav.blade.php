@@ -14,6 +14,10 @@
                 <li class="{!!$reportName=='jc-transaction' ? 'current' : ''!!}">
                     <a href="{!! route('user-transactions.jc-index') !!}"><span>我的投注</span></a>
                 </li>
+                 <li class="{!!$reportName=='myself' ? 'current' : ''!!}">
+                    <a href="{!! route('user-profits.myself') !!}"><span>我的盈亏</span></a>
+                </li>
+
                 <li class="{!!$reportName=='deposit' ? 'current' : ''!!}">
                     <a href="{!! route('user-transactions.mydeposit', Session::get('user_id')) !!}"><span>我的充值</span></a>
                 </li>

@@ -4,12 +4,12 @@
 
 @section ('styles')
     @parent
-    {{ style('reg') }}
+    {!! style('reg') !!}
 @stop
 
 @section('scripts')
     @parent
-    {{ script('validate')}}
+    {!! script('validate')!!}
 
 @stop
 
@@ -58,8 +58,8 @@
             </ol>
 
             <div class="box-pwdContent">
-                <form id="signupForm" action="{{route('find-password')}}" method="post">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                <form id="signupForm" action="{!!route('find-password')!!}" method="post">
+                    <input type="hidden" name="_token" value="{!! csrf_token() !!}" />
                     <input type="hidden" name="_method" value="PUT" />
                     <div class="title">请输入您需要找回密码的用户名</div>
                     <div class="clearfix oneLine">
@@ -70,8 +70,8 @@
                         <div class="f-4 label">验证码：</div>
                         <div class="f-1"><input type="text" name="captcha" class="input" id="checkCode"></div>
                         <div class="f-0">
-                            <a class="verify" href="javascript:changeCaptcha();" title="{{ Lang::get('transfer.Captcha') }}">
-                                <img id="captchaImg"  src="{{ Captcha::img() }}"/>
+                            <a class="verify" href="javascript:changeCaptcha();" title="{!! Lang::get('transfer.Captcha') !!}">
+                                <img id="captchaImg"  src="{!! Captcha::img() !!}"/>
                             </a>
                         </div>
                         <div class="f-0"><a href="javascript:changeCaptcha();" id="refreshCaptcha">刷新</a></div>
@@ -95,7 +95,7 @@
 
     <script>
         function changeCaptcha() {
-            document.getElementById('captchaImg').src = "{{ URL::to('captcha?') }}" + ((Math.random() * 9 + 1) * 100000).toFixed(0);
+            document.getElementById('captchaImg').src = "{!! URL::to('captcha?') !!}" + ((Math.random() * 9 + 1) * 100000).toFixed(0);
         };
     </script>
 @stop

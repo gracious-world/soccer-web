@@ -7,8 +7,8 @@
 
 @section('scripts')
 @parent
-    {{ script('jquery.jscrollpane')}}
-    {{ script('gagame.DatePicker')}}
+    {!! script('jquery.jscrollpane')!!}
+    {!! script('gagame.DatePicker')!!}
 @stop
 
 @section('main')
@@ -16,9 +16,9 @@
 
             <div class="title-normal"></div>
             <ul class="tab-title clearfix">
-                <li><a href="{{ route('reports.agentRebate', 1) }}"><span>代理佣金报表</span></a></li>
-                <li><a href="{{ route('reports.agentLoss', 1) }}"><span>代理盈亏报表</span></a></li>
-                <li class="current"><a href="{{ route('reports.agentDividend', 1) }}"><span>代理分红报表</span></a></li>
+                <li><a href="{!! route('reports.agentRebate', 1) !!}"><span>代理佣金报表</span></a></li>
+                <li><a href="{!! route('reports.agentLoss', 1) !!}"><span>代理盈亏报表</span></a></li>
+                <li class="current"><a href="{!! route('reports.agentDividend', 1) !!}"><span>代理分红报表</span></a></li>
             </ul>
         </div>
 

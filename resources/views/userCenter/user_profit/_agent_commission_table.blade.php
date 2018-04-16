@@ -11,11 +11,11 @@
     <tbody>
         @foreach ($datas as $data)
         <tr>
-            <td>{{ $data->username }}</td>
-            <td>{{ $data->user_type_formatted }}</td>
-            <td>{{ $data->date }}</td>
-            <td>{{ number_format($data->turnover, 4) }}</td>
-            <td>{{ number_format($data->commission, 4) }}</td>
+            <td>{!! $data->username !!}</td>
+            <td>{!! $data->user_type_formatted !!}</td>
+            <td>{!! $data->date !!}</td>
+            <td>{!! number_format($data->turnover, 4) !!}</td>
+            <td>{!! number_format($data->commission, 4) !!}</td>
         </tr>
         @endforeach
     </tbody>

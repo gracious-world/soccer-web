@@ -28,7 +28,7 @@
                     <tr>
                         <td align="right" valign="top"><span class="field-name">可用提现余额：</span></td>
                         <td>
-                            {!! $oAccount->all_withdrawable_formatted !!} 元
+                            {!! $oAccount->withdrawable_formatted !!} 元
                         </td>
                     </tr>
                     <tr>

@@ -4,12 +4,12 @@
 
 @section ('styles')
 @parent
-    {{ style('reg') }}
+    {!! style('reg') !!}
 @stop
 
 @section('scripts')
 @parent
-{{ script('global')}}
+{!! script('global')!!}
 @stop
 
 @section('container')
@@ -46,9 +46,9 @@
                         <h2>用户资料</h2>
                         <p>请填写完整的用户资料，以确保您的账户安全</p>
                     </div>
-                    <form action="{{ $sKeyword ? route('signup', ['prize' => $sKeyword]) : route('signup') }}" method="post" id="signupForm">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="hidden" name="_random" value="{{ Tool::createRandomStr() }}">
+                    <form action="{!! $sKeyword ? route('signup', ['prize' => $sKeyword]) : route('signup') !!}" method="post" id="signupForm">
+                        <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                        <input type="hidden" name="_random" value="{!! Tool::createRandomStr() !!}">
 
                         <ul class="form-ul">
                             <li class="avatar-li" data-action="avatar">
@@ -87,7 +87,7 @@
                             <!-- <li class="name-li space-li" data-action="account">
                                 <label> * 真实姓名</label>
                                 <div class="input-group">
-                                    <input type="text" tabindex="1" id="J-name" class="input" name="name" value="{{ Input::old('name') }}" />
+                                    <input type="text" tabindex="1" id="J-name" class="input" name="name" value="{!! Input::old('name') !!}" />
                                     <span class="ui-text-prompt">真实姓名不能为空</span>
                                     <span class="ico-right"></span>
                                 </div>
@@ -96,7 +96,7 @@
                             <li class="username-li space-li" data-action="account">
                                 <label> * 登录账号</label>
                                 <div class="input-group">
-                                    <input type="text" tabindex="2" id="J-username" class="input" name="username" value="{{ Input::old('username') }}" />
+                                    <input type="text" tabindex="2" id="J-username" class="input" name="username" value="{!! Input::old('username') !!}" />
                                     <span class="ui-text-prompt">用户名格式不对，请重新输入</span>
                                     <span class="ico-right"></span>
                                 </div>
@@ -105,7 +105,7 @@
                             <li class="nickname-li " data-action="account">
                                 <label> * 昵 称</label>
                                 <div class="input-group">
-                                    <input type="text" tabindex="3" id="J-nickname" class="input" name="nickname" value="{{ Input::old('nickname') }}" />
+                                    <input type="text" tabindex="3" id="J-nickname" class="input" name="nickname" value="{!! Input::old('nickname') !!}" />
                                     <span class="ui-text-prompt">昵称不能为空</span>
                                     <span class="ico-right"></span>
                                 </div>
@@ -138,8 +138,8 @@
                                     <span class="ico-right"></span>
                                     <span class="ui-text-prompt">验证码不能为空</span>
                                 </div>
-                                <a class="verify" href="javascript:changeCaptcha();" title="{{ Lang::get('transfer.Captcha') }}">
-                                <img id="captchaImg" class="reg-img-vcode" src="{{ Captcha::img() }}"/></a>
+                                <a class="verify" href="javascript:changeCaptcha();" title="{!! Lang::get('transfer.Captcha') !!}">
+                                <img id="captchaImg" class="reg-img-vcode" src="{!! Captcha::img() !!}"/></a>
                             </li>
                             <li class="button-li">
                                 <label>&nbsp;</label>
@@ -162,7 +162,7 @@
 <script>
 function changeCaptcha () {
     // debugger;
-    captchaImg.src = "{{ URL::to('captcha?') }}" + ((Math.random()*9 +1)*100000).toFixed(0);
+    captchaImg.src = "{!! URL::to('captcha?') !!}" + ((Math.random()*9 +1)*100000).toFixed(0);
 };
 (function($) {
 

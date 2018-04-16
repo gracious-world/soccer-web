@@ -7,8 +7,8 @@
 
 @section('scripts')
 @parent
-{{ script('jquery.jscrollpane') }}
-{{ script('gagame.DatePicker') }}
+{!! script('jquery.jscrollpane') !!}
+{!! script('gagame.DatePicker') !!}
 @stop
 
 
@@ -16,10 +16,10 @@
 <div class="nav-bg nav-bg-tab">
     <div class="title-normal">用户管理</div>
     <ul class="tab-title clearfix">
-        <li><a href="{{ route('users.accurate-create') }}" ><span>精准开户</span></a></li>
-        <li><a href="{{ route('user-links.create') }}"><span>链接开户</span></a></li>
-        <li><a href="{{ route('users.index') }}"><span>用户列表</span></a></li>
-        <li><a href="{{ route('user-links.index') }}"><span>链接管理</span></a></li>
+        <li><a href="{!! route('users.accurate-create') !!}" ><span>精准开户</span></a></li>
+        <li><a href="{!! route('user-links.create') !!}"><span>链接开户</span></a></li>
+        <li><a href="{!! route('users.index') !!}"><span>用户列表</span></a></li>
+        <li><a href="{!! route('user-links.index') !!}"><span>链接管理</span></a></li>
     </ul>
 </div>
 
@@ -27,13 +27,13 @@
     <div class="content">
     <div class="filter-tabs" style="margin-bottom:10px;">
         <div class="filter-tabs-cont">
-                <a href="{{ route('user-profits.index') }}">盈亏报表</a>
-                <a class="current" href="{{ route('user-dividends.index') }}">分红报表</a>
+                <a href="{!! route('user-profits.index') !!}">盈亏报表</a>
+                <a class="current" href="{!! route('user-dividends.index') !!}">分红报表</a>
         </div>
     </div>
 
     <div class="area-search">
-        <form action="{{ route('user-dividends.index') }}" class="form-inline" method="get">
+        <form action="{!! route('user-dividends.index') !!}" class="form-inline" method="get">
             <div class="search-buttons">
                     <button class="btn btn-important btn-search" type="submit"><span>搜索用户</span></button>
                     <!-- <a class="reset-link" href=""><span>恢复默认项</span></a> -->
@@ -60,17 +60,17 @@
         <tbody>
             @foreach ($datas as $data)
             <tr>
-                <td>{{ $data->username }}</td>
-                <td>{{ $data->verified_at }}</td>
-                <td>{{ $data->turnover }}</td>
-                <td>{{ $data->rate }}</td>
-                <td>{{ number_format($data->direct_profit, 4) }}</td>
-                <td>{{ number_format($data->bonus, 4) }}</td>
+                <td>{!! $data->username !!}</td>
+                <td>{!! $data->verified_at !!}</td>
+                <td>{!! $data->turnover !!}</td>
+                <td>{!! $data->rate !!}</td>
+                <td>{!! number_format($data->direct_profit, 4) !!}</td>
+                <td>{!! number_format($data->bonus, 4) !!}</td>
             </tr>
             @endforeach
         </tbody>
     </table>
-@if($datas->getLastPage()>1){{pagination($datas->appends(Input::except('page')), 'w.pages') }}@endif
+@if($datas->getLastPage()>1){!!pagination($datas->appends(Input::except('page')), 'w.pages') !!}@endif
 </div>
 @stop
 

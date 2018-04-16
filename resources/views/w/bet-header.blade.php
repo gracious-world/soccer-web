@@ -49,36 +49,7 @@
 @parent
 @if(isset($bSimple) && !$bSimple)
 <script type="text/javascript">
-{{--var pollBalance = function() {--}}
-    {{--$.ajax({--}}
-        {{--url: '{!! route('users.account') !!}',--}}
-        {{--type: 'GET',--}}
-        {{--dataType: 'json',--}}
-        {{--data: {},--}}
-    {{--})--}}
-    {{--.done(function(d) {--}}
-        {{--var amount =  d.data.amount && d.data.amount.toString()--}}
-            {{--.replace(/(\d)(?=(\d{3})+\.)/g, function($0, $1) {--}}
-                {{--return $1 + ",";--}}
-            {{--});--}}
-        {{--$('#userBalance').text(amount);--}}
-        {{--// console.log("success");--}}
-    {{--})--}}
-    {{--.fail(function(d) {--}}
-        {{--// console.log("error");--}}
-    {{--})--}}
-    {{--.always(function(d) {--}}
-        {{--// console.log("complete");--}}
-    {{--});--}}
-{{--};--}}
-{{--var bLogin = "{!! isset($sUsername) ? $sUsername : '' !!}";--}}
-{{--var balanceTimer = null;--}}
-{{--if (bLogin) {--}}
-    {{--clearInterval(balanceTimer);--}}
-    {{--balanceTimer = setInterval('pollBalance()', 3000);--}}
-{{--} else {--}}
-    {{--clearInterval(balanceTimer);--}}
-{{--}--}}
+
 </script>
 @endif
 

@@ -16,16 +16,16 @@
     <tbody>
         @foreach ($datas as $data)
         <tr>
-            <td>{{ $data->username }}</td>
-            <td>{{ $data->date }}</td>
-            <td>{{ $data->deposit }}</td>
-            <td>{{ $data->withdrawal }}</td>
-            <td>{{ $data->turnover_formatted }}</td>
-            <td>{{ $data->prize_formatted }}</td>
-            <td>{{ $data->commission_formatted }}</td>
-            <td>{{ $data->bonus_formatted }}</td>
-            <td>{{ $data->lose_commission_formatted }}</td>
-            <td><span class="{{ $data->profit < 0 ? 'c-red' : 'c-green' }}">{{ ($data->profit < 0 ? '-' : '+') }}  {{ number_format(abs($data->profit), 2) }}</span></td>
+            <td>{!! $data->username !!}</td>
+            <td>{!! $data->date !!}</td>
+            <td>{!! $data->deposit !!}</td>
+            <td>{!! $data->withdrawal !!}</td>
+            <td>{!! $data->turnover_formatted !!}</td>
+            <td>{!! $data->prize_formatted !!}</td>
+            <td>{!! $data->commission_formatted !!}</td>
+            <td>{!! $data->bonus_formatted !!}</td>
+            <td>{!! $data->lose_commission_formatted !!}</td>
+            <td><span class="{!! $data->profit < 0 ? 'c-red' : 'c-green' !!}">{!! ($data->profit < 0 ? '-' : '+') !!}  {!! number_format(abs($data->profit), 2) !!}</span></td>
         </tr>
         @endforeach
     </tbody>

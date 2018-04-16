@@ -12,7 +12,6 @@
 @section ('container')
 
 @include('w.top')
-{{--@include('w.header')--}}
 @include('w.nav')
 
   <div class="user-center">

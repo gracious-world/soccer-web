@@ -56,8 +56,8 @@
                     <button id="loginButton" type="button">{!! Lang::get('transfer.Login') !!}</button>
                 </li>
                 <li class="option-li">
-                    {{-- <a href="{!!route('signup')!!}">注册</a> --}}
-                    {{-- <a href="{!!route('find-password')!!}">忘记密码?</a> --}}
+                    <a href="{!!route('signup')!!}">注册</a>
+                    <a href="{!!route('find-password')!!}">忘记密码?</a>
 </li>
 </ul>
 
@@ -127,8 +127,9 @@ $tips.addClass('fade');
 
 // login form
 function changeCaptcha () {
+    var captchaImg = $('.captcha-li img');
 // debugger;
-captchaImg.src = "{!! URL::to('captcha?') !!}" + ((Math.random()*9 +1)*100000).toFixed(0);
+    captchaImg.attr('src', "{!! URL::to('captcha?') !!}" + ((Math.random()*9 +1)*100000).toFixed(0));
 };
 
 $(function(){

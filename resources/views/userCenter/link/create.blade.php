@@ -9,19 +9,18 @@
 @parent
     {!! script('gagame.DatePicker') !!}
     {!! script('gagame.Tab') !!}
-{{--    {!! script('gagame.SliderBar') !!}--}}
 @stop
 @section('main')
 <div class="wrap mt18">
     <div class="wrap-inner">
        @include('userCenter.teamManager.teamHeader')
     <div class="personal-center">
-        <form action="{{ route('user-links.create') }}" method="post" id="J-form">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-            <input type="hidden" name="is_agent" id="J-input-userType" value="{{ Input::old('is_agent', 0) }}" />
+        <form action="{!! route('user-links.create') !!}" method="post" id="J-form">
+            <input type="hidden" name="_token" value="{!! csrf_token() !!}" />
+            <input type="hidden" name="is_agent" id="J-input-userType" value="{!! Input::old('is_agent', 0) !!}" />
             <input type="hidden" name="prize_group_id" id="J-input-groupid" value="" />
             <input type="hidden" id="J-input-prize" value="">
-            <input type="hidden" name="prize_group_type" id="J-input-group-type" value="{{ Input::old('prize_group_type', 2) }}" />
+            <input type="hidden" name="prize_group_type" id="J-input-group-type" value="{!! Input::old('prize_group_type', 2) !!}" />
             <input type="hidden" name="agent_prize_set_quota" id="J-agent-quota-limit-json" value="" />
 
     <div class="content link-create-wrap" id="J-panel-cont">
@@ -31,18 +30,14 @@
                 <i class="item-icon-13"></i>选择账户类型
             </div>
             <div class="item-info filter-tabs-cont" id="J-user-type-switch-panel">
-                {{--@if($bCanRegisterPlayer)--}}
                 <a data-userTypeId="0" href="javascript:void(0);">
                     <i class="user-type-icon-player"></i>
                     <span>玩家账号</span>
                 </a>
-                {{--@endif--}}
-{{--                @if ($bCanRegisterAgent)--}}
                 <a data-userTypeId="1" href="javascript:void(0);">
                     <i class="user-type-icon-agent"></i>
                     <span>代理账号</span>
                 </a>
-                {{--@endif--}}
             </div>
         </div>
 
@@ -55,19 +50,19 @@
                     <label>链接有效期：</label>
                     <select id="J-select-link-valid" style="display:none;" name="valid_days">
                         <option value="">请选择</option>
-                        <option value="1" {{ Input::old('valid_days') == 1 ? 'selected' : '' }}>1天</option>
-                        <option value="7" {{ Input::old('valid_days') == 7 ? 'selected' : '' }}>7天</option>
-                        <option value="30" {{ Input::old('valid_days') == 30 ? 'selected' : '' }}>30天</option>
-                        <option value="90" {{ Input::old('valid_days') == 90 ? 'selected' : '' }}>90天</option>
-                        <option value="0" {{ Input::old('valid_days') === '0' ? 'selected' : '' }}>永久有效</option>
+                        <option value="1" {!! Input::old('valid_days') == 1 ? 'selected' : '' !!}>1天</option>
+                        <option value="7" {!! Input::old('valid_days') == 7 ? 'selected' : '' !!}>7天</option>
+                        <option value="30" {!! Input::old('valid_days') == 30 ? 'selected' : '' !!}>30天</option>
+                        <option value="90" {!! Input::old('valid_days') == 90 ? 'selected' : '' !!}>90天</option>
+                        <option value="0" {!! Input::old('valid_days') === '0' ? 'selected' : '' !!}>永久有效</option>
                     </select>
                 </p>
                 <p>
                     <label>推广渠道：</label>
                         <select id="J-select-channel-name" style="display:none;">
                             <option value="">请选择</option>
-                            <option value="论坛" {{ Input::old('channel') == '论坛' ? 'selected' : '' }}>论坛</option>
-                            <option value="qq群" {{ Input::old('channel') == 'qq群' ? 'selected' : '' }}>qq群</option>
+                            <option value="论坛" {!! Input::old('channel') == '论坛' ? 'selected' : '' !!}>论坛</option>
+                            <option value="qq群" {!! Input::old('channel') == 'qq群' ? 'selected' : '' !!}>qq群</option>
                             <option value="0">自定义</option>
                         </select>
                         &nbsp;&nbsp;
@@ -78,7 +73,7 @@
                         $aAgentQQ = Input::old('agent_qqs');
                     ?>
                     <label>推广QQ：<i data-qq-tips class="alert-icon">为方便客户与您联系，建议您填写真实的推广QQ并开通临时会话功能。此QQ会显示在该链接开户页面上</i></label>
-                    <input name="agent_qqs[]" class="input w-1 agentQQ" value="{{ isset($aAgentQQ[0]) ? $aAgentQQ[0] : '' }}" type="text">
+                    <input name="agent_qqs[]" class="input w-1 agentQQ" value="{!! isset($aAgentQQ[0]) ? $aAgentQQ[0] : '' !!}" type="text">
                     <a href="javascript;" data-add-qq class="btn" data-tips="最多只能添加4个推广QQ">+</a>
                 </p>
             </div>
@@ -92,9 +87,9 @@
             <div class="item-info">
                 <p>通过此链接注册的用户最多可以拥有的相应奖金配额如下，1950以下奖金组开户无配额限制</p>
                         <input type="text" class="input"
-                            data-quota="{{$quota}}"
+                            data-quota="{!!$quota!!}"
                             value="0">
-                        <p>最大允许<span class="quota-max">{{$quota}}</span></p>
+                        <p>最大允许<span class="quota-max">{!!$quota!!}</span></p>
                     </li>
                 </ul>
             </div>
@@ -113,14 +108,14 @@
                         <li class="">
                             <label>单关返点：</label>
                             <input type="text" id="J-input-fb-s" name="fb_single" class="input J-football-input input-big w-1"
-                                   value="0.0" max-data="{{$fUserSinglePercentValue}}" >%
-                            <span>一共有 <i>{{$fUserSinglePercentValue}}</i> % ，可以分配</span>
+                                   value="0.0" max-data="{!!$fUserSinglePercentValue!!}" >%
+                            <span>一共有 <i>{!!$fUserSinglePercentValue!!}</i> % ，可以分配</span>
                         </li>
                         <li class="">
                             <label>混合过关：</label>
                             <input type="text" id="J-input-fb-a" name="fb_all" class="input J-football-input input-big w-1"
-                                   value="0.0" max-data="{{$fUserMultiPercentValue}}" >%
-                            <span>一共有 <i>{{$fUserMultiPercentValue}}</i> % ，可以分配</span>
+                                   value="0.0" max-data="{!!$fUserMultiPercentValue!!}" >%
+                            <span>一共有 <i>{!!$fUserMultiPercentValue!!}</i> % ，可以分配</span>
                         </li>
                     </ul>
                 </div>
@@ -161,18 +156,15 @@ var sliderEventBinded_player = sliderEventBinded_agent = false;
 
 // 用户类型
 var userModel;
-//var isTopAgent = {{intval(Session::get('is_top_agent'))}};
+//var isTopAgent = {!!intval(Session::get('is_top_agent'))!!};
 
 var confirmWin = new gagame.Message();
 var confirmWinMask = new gagame.Mask();
 
 var dataInfo = ['',''];//数据缓存
 
-var prizeGroupUrl = "{{ route('user-user-prize-sets.prize-set-detail') }}"  ; //查看奖金组连接缓存
+var prizeGroupUrl = "{!! route('user-user-prize-sets.prize-set-detail') !!}"  ; //查看奖金组连接缓存
 // 代理奖金组数据
-{{--var agentPrizeGroup = {{$oAllPossibleAgentPrizeGroups}};--}}
-{{--//玩家奖金组数据--}}
-{{--var playerPrizeGroup = {{$oAllPossiblePrizeGroups}};--}}
 
 //判断用户角色滑动控件初始化方法
 var checkSlider =function (){

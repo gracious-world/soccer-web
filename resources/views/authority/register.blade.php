@@ -4,12 +4,12 @@
 
 @section ('styles')
     @parent
-    {{ style('reg') }}
+    {!! style('reg') !!}
 @stop
 
 @section('scripts')
     @parent
-    {{ script('global')}}
+    {!! script('global')!!}
 @stop
 
 @section('container')
@@ -20,9 +20,9 @@
             <div class="normal-title">欢迎注册金芒果账户</div>
             <div class="container">
                 <form action="#" method="post" id="signupForm">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input type="hidden" name="_random" value="{{ Tool::createRandomStr() }}">
-                    <input type="hidden" name="parent_id" value="{{ Input::get('uid')}}">
+                    <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                    <input type="hidden" name="_random" value="{!! Tool::createRandomStr() !!}">
+                    <input type="hidden" name="parent_id" value="{!! Input::get('uid')!!}">
                     <!-- 密码强度 -->
                     <input type="hidden" name="password_strength" id="password_strength"/>
                     <ul class="form-ul ml190">

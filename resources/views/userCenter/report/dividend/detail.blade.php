@@ -7,8 +7,8 @@
 
 @section('scripts')
 @parent
-{{ script('jquery.jscrollpane') }}
-{{ script('gagame.DatePicker') }}
+{!! script('jquery.jscrollpane') !!}
+{!! script('gagame.DatePicker') !!}
 @stop
 
 
@@ -18,11 +18,11 @@
     <div class="title-normal">查看分红明细</div>
     <ul class="tab-title clearfix">
 
-        <li><a href="{{ route('team-lottery-profits.index') }}"><span>团队彩种盈亏报表</span></a></li>
-        <li><a href="{{ route('user-lottery-profits.index') }}"><span>用户彩种盈亏报表</span></a></li>
-        <li><a href="{{ route('team-profits.index') }}"><span>团队盈亏报表</span></a></li>
-        <li><a href="{{ route('user-profits.index') }}"><span>用户盈亏报表</span></a></li>
-        <li class="current"><a href="{{ route('user-dividends.index') }}"><span>分红报表</span></a></li>
+        <li><a href="{!! route('team-lottery-profits.index') !!}"><span>团队彩种盈亏报表</span></a></li>
+        <li><a href="{!! route('user-lottery-profits.index') !!}"><span>用户彩种盈亏报表</span></a></li>
+        <li><a href="{!! route('team-profits.index') !!}"><span>团队盈亏报表</span></a></li>
+        <li><a href="{!! route('user-profits.index') !!}"><span>用户盈亏报表</span></a></li>
+        <li class="current"><a href="{!! route('user-dividends.index') !!}"><span>分红报表</span></a></li>
     </ul>
 </div>
 <div class="content">
@@ -54,15 +54,15 @@
             ?>
             @foreach ($datas as $data)
             <tr>
-                <td>{{$aGameTypes[$data->game_type]}}</td>
-                <td>{{$data->turnover}}</td>
-                <td>{{$data->prize}}</td>
-                <td>{{$data->commission}}</td>
-                <td>{{$data->bonus}}</td>
-                <td>{{$data->lose_commission}}</td>
-                <td>{{$data->profit}}</td>
-                <td>{{$data->rate * 100 . '%'}}</td>
-                <td>{{$data->amount}}</td>
+                <td>{!!$aGameTypes[$data->game_type]!!}</td>
+                <td>{!!$data->turnover!!}</td>
+                <td>{!!$data->prize!!}</td>
+                <td>{!!$data->commission!!}</td>
+                <td>{!!$data->bonus!!}</td>
+                <td>{!!$data->lose_commission!!}</td>
+                <td>{!!$data->profit!!}</td>
+                <td>{!!$data->rate * 100 . '%'!!}</td>
+                <td>{!!$data->amount!!}</td>
             </tr>
 
             <?php
@@ -81,14 +81,14 @@
         </tbody>
         <tfoot>
             <td>合计</td>
-            <td>{{$fTotalturnover}}</td>
-            <td>{{$fTotalprize}}</td>
-            <td>{{$fTotalcommission}}</td>
-            <td>{{$fTotalbonus}}</td>
-            <td>{{$fTotallose_commission}}</td>
-            <td>{{$fTotalprofit}}</td>
+            <td>{!!$fTotalturnover!!}</td>
+            <td>{!!$fTotalprize!!}</td>
+            <td>{!!$fTotalcommission!!}</td>
+            <td>{!!$fTotalbonus!!}</td>
+            <td>{!!$fTotallose_commission!!}</td>
+            <td>{!!$fTotalprofit!!}</td>
             <td>&nbsp;</td>
-            <td>{{$fTotalamount}}</td>
+            <td>{!!$fTotalamount!!}</td>
     </tfoot>
     </table>
     <br>
@@ -109,7 +109,7 @@
             (new gagame.DatePicker({input: '#J-date-end', isShowTime: false, startYear: 2013})).show();
         });
         $('#J-go-back').click(function () {
-             location.href = '{{route('user-dividends.index')}}';
+             location.href = '{!!route('user-dividends.index')!!}';
         });
 
     })(jQuery);

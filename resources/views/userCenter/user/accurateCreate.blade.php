@@ -9,18 +9,9 @@
 @parent
     {!! script('gagame.DatePicker') !!}
     {!! script('gagame.Tab') !!}
-{{--    {!! script('gagame.SliderBar') !!}--}}
 @stop
 @section('main')
-<div class="nav-bg nav-bg-tab">
-    <div class="title-normal">用户管理</div>
-    <ul class="tab-title clearfix">
-        <li class="current"><a href="{!! route('users.accurate-create') !!}" ><span>精准开户</span></a></li>
-        <li><a href="{!! route('user-links.create') !!}"><span>链接开户</span></a></li>
-        <li><a href="{!! route('users.index') !!}"><span>用户列表</span></a></li>
-        <li><a href="{!! route('user-links.index') !!}"><span>链接管理</span></a></li>
-    </ul>
-</div>
+@include('userCenter.teamManager.teamHeader')
 <form action="{!! route('users.accurate-create') !!}" method="post" id="J-form">
     <input type="hidden" name="_token" value="{!! csrf_token() !!}" />
     <input type="hidden" name="_random" value="{!! Tool::createRandomStr() !!}" />
@@ -37,10 +28,19 @@
                 <i class="item-icon-13"></i>选择账户类型
             </div>
             <div class="item-info filter-tabs-cont" id="J-user-type-switch-panel">
+            @if(Session::get('is_agent'))
+                <a data-userTypeId="1" href="javascript:void(0);">
+                    <i class="user-type-icon-agent"></i>
+                    <span>代理账号</span>
+                </a>
+            @endif
+
+            @if(Session::get('is_agent') && !Session::get('is_top_agent'))
                 <a data-userTypeId="0" href="javascript:void(0);">
                     <i class="user-type-icon-player"></i>
                     <span>玩家账号</span>
                 </a>
+             @endif
 
             </div>
         </div>
@@ -79,8 +79,8 @@
             </div>
             <div class="item-info">
                 <p>通过此链接注册的用户最多配额如下</p>
-                <input type="text" class="input" data-quota="{{$oUserAccountQuota->left_quota}}" value="0">
-                <p>最大允许<span class="quota-max">{{$oUserAccountQuota->left_quota}}</span></p>
+                <input type="text" class="input" data-quota="{!!$oUserAccountQuota->left_quota!!}" value="0">
+                <p>最大允许<span class="quota-max">{!!$oUserAccountQuota->left_quota!!}</span></p>
             </div>
         </div>
 
@@ -95,13 +95,13 @@
                     <ul>
                         <li class="">
                             <label>单关返点：</label>
-                            <input type="text" id="J-input-fb-s" name="fb_single" class="input J-football-input input-big w-1" value="0.0" max-data="{{$fUserSinglePercentValue}}" >%
-                            <span>一共有 <i>{{$fUserSinglePercentValue}}</i> % ，可以分配</span>
+                            <input type="text" id="J-input-fb-s" name="fb_single" class="input J-football-input input-big w-1" value="0.0" max-data="{!!$fUserSinglePercentValue!!}" >%
+                            <span>一共有 <i>{!!$fUserSinglePercentValue!!}</i> % ，可以分配</span>
                         </li>
                         <li class="">
                             <label>混合过关：</label>
-                            <input type="text" id="J-input-fb-a" name="fb_all" class="input J-football-input input-big w-1" value="0.0" max-data="{{$fUserMultiPercentValue}}" >%
-                            <span>一共有 <i>{{$fUserMultiPercentValue}}</i> % ，可以分配</span>
+                            <input type="text" id="J-input-fb-a" name="fb_all" class="input J-football-input input-big w-1" value="0.0" max-data="{!!$fUserMultiPercentValue!!}" >%
+                            <span>一共有 <i>{!!$fUserMultiPercentValue!!}</i> % ，可以分配</span>
                         </li>
                     </ul>
                 </div>
@@ -111,7 +111,6 @@
         <div class="bonus-config-result">
             <strong>账号设置结果：</strong>
             <label>账户类型<span class="J-user-type">----</span></label>
-            {{--<label>数字彩奖金组<span class="J-init-bonusgroup">----</span></label>--}}
             <label>竞彩单关<span class="J-input-fb-s">0.0</span>%</label>
             <label>竞彩串关<span class="J-input-fb-a">0.0</span>%</label>
 
@@ -147,9 +146,7 @@ var dataInfo = ['',''];//数据缓存
 
 var prizeGroupUrl = "{!! route('user-user-prize-sets.prize-set-detail') !!}"  ; //查看奖金组连接缓存
 // 代理奖金组数据
-{{--var agentPrizeGroup = {!!$oAllPossibleAgentPrizeGroups!!};--}}
 //玩家奖金组数据
-{{--var playerPrizeGroup = {!!$oAllPossiblePrizeGroups!!};--}}
 
 //判断用户角色滑动控件初始化方法
 var checkSlider =function (){

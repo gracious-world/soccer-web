@@ -5,14 +5,14 @@
             <!-- <div class="logo"></div> -->
             <!-- 用户中心 -->
             <div class="top-nav-user">
-                <a href="{{ route('users.user') }}" class="top-nav-toggle" data-overdropdown="handler">
-                    <span>{{ Session::get('nickname') }}</span>
+                <a href="{!! route('users.user') !!}" class="top-nav-toggle" data-overdropdown="handler">
+                    <span>{!! Session::get('nickname') !!}</span>
                     <!-- <i class="caret"></i> -->
                 </a>
             </div>
             <!-- 站内信 -->
             <div class="top-nav-msg">
-                <a href="{{ route('station-letters.index') }}" class="top-nav-toggle" data-overdropdown="handler">
+                <a href="{!! route('station-letters.index') !!}" class="top-nav-toggle" data-overdropdown="handler">
                     <i></i>
                     <span>系统通知<b id="J-top-msg-num" class="highlight-color"></b></span>
                     <em class="caret"></em>
@@ -38,17 +38,16 @@
 
                 <li class="top-account-balance">
                     <span class="balance-a" style="display:none;">余额：<span data-user-account-balance class="highlight-color">{!! $fAvailable !!}</span> 元
-                        {{--<i data-refresh-balance></i>--}}
                     </span>
                     <span class="balance-b" style="display:none;">余额已隐藏</span>
                     <span  id="balance-toggle">隐藏</span>
                 </li>
                 @if(Session::get('is_player'))
                 <li class="top-account-deposit">
-
                     <a href="{!! $sPaymentRouteStr !!}">
                         <i></i><span>充值</span>
-                </a></li>
+                    </a>
+                </li>
                 @endif
                 <li class="top-account-withdraw">
                     <a href="javascript:void(0);">
@@ -109,7 +108,7 @@ $(function() {
     });
 
     // 账户余额
-    var balanceUrl ="{{route('users.user-monetary-info')}}";
+    var balanceUrl ="{!!route('users.user-monetary-info')!!}";
     // $('body').on('click', '[data-refresh-balance]', function() {
     //     var me = this;
     //     if ($(me).hasClass('onhandled')) return false;
@@ -161,7 +160,7 @@ $(function() {
             html = '';
         $.ajax({
             type: 'GET',
-            url: "{{ route('station-letters.get-user-messages') }}",
+            url: "{!! route('station-letters.get-user-messages') !!}",
             dataType: 'json',
             success: function(resp){
                 if( Object.prototype.toString.call( resp ) === '[object Array]' && resp.length ){
@@ -181,8 +180,8 @@ $(function() {
                                 <a href="' + msg.url + '"><i></i>' + msg.msg_title + '</a> \
                             </li>';
                     });
-                    html += '</ul><p class="text-right"><a href="' + '{{ route("station-letters.index") }}' + '">查看更多>></a></p>';
-                    // html = '<p>未读新消息<a href="' + '{{ route("station-letters.index") }}' + '" class="highlight-color">(' + unreaded + ')</a></p>' + html;
+                    html += '</ul><p class="text-right"><a href="' + '{!! route("station-letters.index") !!}' + '">查看更多>></a></p>';
+                    // html = '<p>未读新消息<a href="' + '{!! route("station-letters.index") !!}' + '" class="highlight-color">(' + unreaded + ')</a></p>' + html;
                 }else{
                     html += '<p class="text-center">未读新消息<a class="highlight-color">(0)</a></p><div class="top-nav-no-msg">没有新消息了！</div>';
                 }
@@ -200,7 +199,7 @@ $(function() {
             html = '';
         $.ajax({
             type: 'GET',
-            url: "{{ route('system-notices.user-notices') }}",
+            url: "{!! route('system-notices.user-notices') !!}",
             dataType: 'json',
             success: function(resp){
                 if( Object.prototype.toString.call( resp ) === '[object Array]' && resp.length ){
@@ -220,8 +219,8 @@ $(function() {
                                 <a href="' + msg.url + '"><i></i>' + msg.title + '</a> \
                             </li>';
                     });
-                    html += '</ul><p class="text-right"><a href="' + '{{ route("system-notices.index") }}' + '">查看更多>></a></p>';
-                    // html = '<p>未读新消息<a href="' + '{{ route("station-letters.index") }}' + '" class="highlight-color">(' + unreaded + ')</a></p>' + html;
+                    html += '</ul><p class="text-right"><a href="' + '{!! route("system-notices.index") !!}' + '">查看更多>></a></p>';
+                    // html = '<p>未读新消息<a href="' + '{!! route("station-letters.index") !!}' + '" class="highlight-color">(' + unreaded + ')</a></p>' + html;
                 }else{
                     html += '<p class="text-center">未读新消息<a class="highlight-color">(0)</a></p><div class="top-nav-no-msg">没有新消息了！</div>';
                 }

@@ -20,12 +20,7 @@
         <form action="{!! route('signup') !!}" method="post" id="signupForm">
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
             <input type="hidden" name="_random" value="{!! Tool::createRandomStr() !!}">
-            {{--<div class="clearfix oneLine">--}}
-                {{--<div class="f-2 label">推广码：</div>--}}
-                {{--<div class="f-3"><input type="text" name="prize" class="input" id="code"></div>--}}
-                {{--<div class="f-5 light" id="codeError">请填写上级的推广码</div>--}}
-            {{--</div>--}}
-            <div class="clearfix oneLine">
+             <div class="clearfix oneLine">
                 <div class="f-2 label">用户名：</div>
                 <div class="f-3"><input type="text" name="username" class="input" id="userName" ></div>
                 <div class="f-5 light" id="userNameError">用户名长度为5-16个字符，可使用数字、英文、中文</div>
@@ -40,16 +35,6 @@
                 <div class="f-3"><input type="password" name="password_confirmation" class="input" id="confirmPwd"></div>
                 <div class="f-5 light" id="confirmPwdError"></div>
             </div>
-            {{--<div class="clearfix oneLine">--}}
-                {{--<div class="f-2 label">资金密码：</div>--}}
-                {{--<div class="f-3"><input type="password" name="fund_password" class="input" id="fundsPwd"></div>--}}
-                {{--<div class="f-5 light lh15" id="fundsPwdError">由字母和数字组成6-16个字符；且必须包含数字和字母，不允许连续三位相同，不能和登录密码相同</div>--}}
-            {{--</div>--}}
-            {{--<div class="clearfix oneLine">--}}
-                {{--<div class="f-2 label">确认资金密码：</div>--}}
-                {{--<div class="f-3"><input type="password" name="fund_password_confirmation" class="input" id="refundsPwd"></div>--}}
-                {{--<div class="f-5 light" id="refundsPwdError"></div>--}}
-            {{--</div>--}}
             <div class="clearfix oneLine">
                 <div class="f-2 label">邮箱：</div>
                 <div class="f-3"><input type="text" name="email" class="input" id="email"></div>
@@ -59,7 +44,7 @@
                 <div class="f-2 label">验证码：</div>
                 <div class="f-1"><input type="text" name="captcha" class="input" id="checkCode"></div>
                 <div class="f-0">
-                    <a id='captcha_a' class="verify" href="javascript:changeCaptcha();" title="{{ Lang::get('transfer.Captcha') }}">
+                    <a id='captcha_a' class="verify" href="javascript:changeCaptcha();" title="{!! Lang::get('transfer.Captcha') !!}">
                         {!! Captcha::img() !!}
                     </a>
                  </div>

@@ -11,11 +11,11 @@
     <tbody>
         <!-- current agent -->
         <tr>
-            <td>{{ $oAgentSumPerDay->username }}</td>
-            <td>{{ $oAgentSumPerDay->user_type_formatted }}</td>
-            <td>{{ $oAgentSumPerDay->date }}</td>
-            <td>{{ number_format($oAgentSumPerDay->team_turnover, 4) }}</td>
-            <td>{{ number_format($oAgentSumPerDay->commission, 4) }}</td>
+            <td>{!! $oAgentSumPerDay->username !!}</td>
+            <td>{!! $oAgentSumPerDay->user_type_formatted !!}</td>
+            <td>{!! $oAgentSumPerDay->date !!}</td>
+            <td>{!! number_format($oAgentSumPerDay->team_turnover, 4) !!}</td>
+            <td>{!! number_format($oAgentSumPerDay->commission, 4) !!}</td>
         </tr>
         <!-- current agent -->
         @foreach ($datas as $data)
@@ -28,11 +28,11 @@
             $fTotalCommissionNum = $data->is_agent ? $data->team_commission : $data->commission;
         ?>
         <tr>
-            <td>{{ $data->username }}</td>
-            <td>{{ $data->user_type_formatted }}</td>
-            <td>{{ $data->date }}</td>
-            <td>{{ number_format($fTotalTurnOverNum, 4) }}</td>
-            <td>{{ number_format($fTotalCommissionNum, 4) }}</td>
+            <td>{!! $data->username !!}</td>
+            <td>{!! $data->user_type_formatted !!}</td>
+            <td>{!! $data->date !!}</td>
+            <td>{!! number_format($fTotalTurnOverNum, 4) !!}</td>
+            <td>{!! number_format($fTotalCommissionNum, 4) !!}</td>
         </tr>
         @endforeach
     </tbody>

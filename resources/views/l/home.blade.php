@@ -16,8 +16,6 @@
 @stop
 
 @section ('container')
-    {{--@include('w.nav')--}}
-   {{--@include('w.header')--}}
         <div class="g_33 main clearfix">
             <div class="main-content">
                 @section ('main')

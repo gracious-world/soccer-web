@@ -15,12 +15,12 @@
         ?>
         @foreach ($datas as $data)
         <tr>
-            <td>{{ $data->date }}</td>
-            <td>{{ $data->deposit }}</td>
-            <td>{{ $data->withdrawal }}</td>
-            <td>{{ $data->turnover_formatted }}</td>
-            <td>{{ $data->prize_formatted }}</td>
-            <td><span class="{{ $data->profit < 0 ? 'c-red' : 'c-green' }}">{{ ($data->profit < 0 ? '-' : '+') }}  {{ number_format(abs($data->profit), 4) }}</span></td>
+            <td>{!! $data->date !!}</td>
+            <td>{!! $data->deposit !!}</td>
+            <td>{!! $data->withdrawal !!}</td>
+            <td>{!! $data->turnover_formatted !!}</td>
+            <td>{!! $data->prize_formatted !!}</td>
+            <td><span class="{!! $data->profit < 0 ? 'c-red' : 'c-green' !!}">{!! ($data->profit < 0 ? '-' : '+') !!}  {!! number_format(abs($data->profit), 4) !!}</span></td>
         </tr>
         <?php
         $fTotalDepositNum += $data->deposit;
@@ -30,15 +30,15 @@
         $fTotalProfitNum += $data->profit;
         ?>
         @endforeach
-        @if($datas->getTotal()>0)
+        @if($datas->count()>0)
     <tfoot>
         <tr>
             <td>小结</td>
-            <td><span>{{ number_format($fTotalDepositNum, 2) }}</span></td>
-            <td><span>{{ number_format($fTotalWithdrawNum, 2) }}</span></td>
-            <td><span>{{ number_format($fTotalBetNum, 2) }}</span></td>
-            <td><span>{{ number_format($fTotalPrizeNum, 2) }}</span></td>
-            <td><span class="{{ $fTotalProfitNum < 0 ? 'c-red' : 'c-green' }}">{{ ($fTotalProfitNum < 0 ? '-' : '+') }}  {{ number_format(abs($fTotalProfitNum), 2) }}</span></td>
+            <td><span>{!! number_format($fTotalDepositNum, 2) !!}</span></td>
+            <td><span>{!! number_format($fTotalWithdrawNum, 2) !!}</span></td>
+            <td><span>{!! number_format($fTotalBetNum, 2) !!}</span></td>
+            <td><span>{!! number_format($fTotalPrizeNum, 2) !!}</span></td>
+            <td><span class="{!! $fTotalProfitNum < 0 ? 'c-red' : 'c-green' !!}">{!! ($fTotalProfitNum < 0 ? '-' : '+') !!}  {!! number_format(abs($fTotalProfitNum), 2) !!}</span></td>
         </tr>
     </tfoot>
     @endif

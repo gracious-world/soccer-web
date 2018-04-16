@@ -7,8 +7,8 @@
 
 @section('scripts')
 @parent
-    {{ script('jquery.jscrollpane') }}
-    {{ script('gagame.DatePicker') }}
+    {!! script('jquery.jscrollpane') !!}
+    {!! script('gagame.DatePicker') !!}
 @stop
 
 
@@ -17,10 +17,10 @@
     <div class="nav-bg nav-bg-tab">
     <div class="title-normal">代理报表</div>
     <ul class="tab-title clearfix">
-        <li><a href="{{ route('team-profits.index') }}"><span>下级团队盈亏报表</span></a></li>
-        <li class="current"><a href="{{ route('team-profits.self') }}"><span>自己团队盈亏报表</span></a></li>
+        <li><a href="{!! route('team-profits.index') !!}"><span>下级团队盈亏报表</span></a></li>
+        <li class="current"><a href="{!! route('team-profits.self') !!}"><span>自己团队盈亏报表</span></a></li>
         @if(Session::get('is_top_agent'))
-        <li><a href="{{ route('user-dividends.index') }}"><span>分红报表</span></a></li>
+        <li><a href="{!! route('user-dividends.index') !!}"><span>分红报表</span></a></li>
       @endif
     </ul>
 </div>
@@ -30,7 +30,7 @@
         @include('centerUser.team_profit._self_search')
         @include('centerUser.team_profit._agent_table')
 
-        {{ pagination($datas->appends(Input::except('page')), 'w.pages') }}
+        {!! pagination($datas->appends(Input::except('page')), 'w.pages') !!}
     </div>
 @stop
 

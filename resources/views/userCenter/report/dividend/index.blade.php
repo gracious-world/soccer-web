@@ -7,8 +7,8 @@
 
 @section('scripts')
 @parent
-{{ script('jquery.jscrollpane') }}
-{{ script('gagame.DatePicker') }}
+{!! script('jquery.jscrollpane') !!}
+{!! script('gagame.DatePicker') !!}
 @stop
 
 
@@ -44,17 +44,17 @@
         <tbody>
             @foreach ($datas as $data)
             <tr>
-                <td>{{ $data->username }}</td>
-                <td>{{ "$data->begin_date 至 $data->end_date" }}</td>
-                <td>{{ $data->turnover_formatted }}</td>
-                <td>{{ $data->prize_formatted }}</td>
-                <td>{{ $data->commission_formatted }}</td>
-                <td>{{ $data->bonus_formatted }}</td>
-                <td>{{ $data->lose_commission_formatted }}</td>
-                <td>{{ $data->profit_formatted }}</td>
-                <td>{{ $data->rate }}</td>
-                <td>{{ $data->amount_formatted }}</td>
-                <td><a href="{{route('user-gt-dividends.detail', [$data->year, $data->month, $data->batch])}}">查看明细</a></td>
+                <td>{!! $data->username !!}</td>
+                <td>{!! "$data->begin_date 至 $data->end_date" !!}</td>
+                <td>{!! $data->turnover_formatted !!}</td>
+                <td>{!! $data->prize_formatted !!}</td>
+                <td>{!! $data->commission_formatted !!}</td>
+                <td>{!! $data->bonus_formatted !!}</td>
+                <td>{!! $data->lose_commission_formatted !!}</td>
+                <td>{!! $data->profit_formatted !!}</td>
+                <td>{!! $data->rate !!}</td>
+                <td>{!! $data->amount_formatted !!}</td>
+                <td><a href="{!!route('user-gt-dividends.detail', [$data->year, $data->month, $data->batch])!!}">查看明细</a></td>
             </tr>
             @endforeach
         </tbody>

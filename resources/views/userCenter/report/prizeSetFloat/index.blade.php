@@ -7,8 +7,8 @@
 
 @section('scripts')
 @parent
-{{ script('jquery.jscrollpane') }}
-{{ script('gagame.DatePicker') }}
+{!! script('jquery.jscrollpane') !!}
+{!! script('gagame.DatePicker') !!}
 @stop
 
 
@@ -18,13 +18,13 @@
 
 <div class="content">
     <div class="area-search">
-        <form action="{{ route('user-prizeset-float-reports.index') }}" class="form-inline" method="get">
+        <form action="{!! route('user-prizeset-float-reports.index') !!}" class="form-inline" method="get">
         <p class="row">
             查询日期 从<span class="ui-prompt"></span>
-            <input type="text" class="input w-3" name='updated_at_from' value="{{ Input::get('updated_at_from') }}" id="J-date-start-from">
+            <input type="text" class="input w-3" name='updated_at_from' value="{!! Input::get('updated_at_from') !!}" id="J-date-start-from">
             &nbsp;
             到 <span class="ui-prompt"></span>
-            <input type="text" value="{{ Input::get('updated_at_to') }}" class="input w-3" name='updated_at_to' id="J-date-start-to">
+            <input type="text" value="{!! Input::get('updated_at_to') !!}" class="input w-3" name='updated_at_to' id="J-date-start-to">
             &nbsp;
             升降点类型：
             <select  id="J-select-custom-type" name='is_up'>
@@ -51,17 +51,17 @@
         <tbody>
             @foreach ($datas as $data)
             <tr>
-                <td>{{ $data->updated_at }}</td>
-                <td>{{$data->day}}天@if($data->is_up==1)升点@else降点@endif</td>
-                <td>{{ $data->old_prize_group }}</td>
-                <td>{{ $data->new_prize_group }}</td>
-                <td>{{ number_format($data->standard_turnover, 4) }}</td>
-                <td>{{ number_format($data->total_team_turnover, 4) }}</td>
+                <td>{!! $data->updated_at !!}</td>
+                <td>{!!$data->day!!}天@if($data->is_up==1)升点@else降点@endif</td>
+                <td>{!! $data->old_prize_group !!}</td>
+                <td>{!! $data->new_prize_group !!}</td>
+                <td>{!! number_format($data->standard_turnover, 4) !!}</td>
+                <td>{!! number_format($data->total_team_turnover, 4) !!}</td>
             </tr>
             @endforeach
         </tbody>
     </table>
-    {{ pagination($datas->appends(Input::except('page')), 'w.pages') }}
+    {!! pagination($datas->appends(Input::except('page')), 'w.pages') !!}
 </div>
 @stop
 

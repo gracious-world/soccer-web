@@ -1,12 +1,12 @@
 @if (isset($aSelectorData['aHiddenColumns']) && count($aSelectorData['aHiddenColumns']))
     @foreach($aSelectorData['aHiddenColumns'] as $key => $aHiddenColumn)
-    <input type="hidden" name="{{ $aHiddenColumn['name'] }}" id="J-input-{{ $key + 1 }}" value="{{ isset($aHiddenColumn['value']) ? $aHiddenColumn['value'] : '' }}" />
+    <input type="hidden" name="{!! $aHiddenColumn['name'] !!}" id="J-input-{!! $key + 1 !!}" value="{!! isset($aHiddenColumn['value']) ? $aHiddenColumn['value'] : '' !!}" />
     @endforeach
 @endif
 @if (isset($aSelectorData['aSelectColumn']) && count($aSelectorData['aSelectColumn']))
     @foreach($aSelectorData['aSelectColumn'] as $key => $aSelectColumn)
-    <select id="J-select-{{ $key + 1 }}" style="display:none;" name="{{ $aSelectColumn['name'] }}">
-        <option value="">{{ $aSelectColumn['emptyDesc'] }}</option>
+    <select id="J-select-{!! $key + 1 !!}" style="display:none;" name="{!! $aSelectColumn['name'] !!}">
+        <option value="">{!! $aSelectColumn['emptyDesc'] !!}</option>
     </select>
     @endforeach
 @endif

@@ -34,11 +34,6 @@ $(function(){
     var sign     = params[2];
     var skin     = params[3];
 
-    {{--if (!username || !identity) {--}}
-        {{--// alert('登录竞彩平台失败');--}}
-        {{--window.location.href = "{!! route('games.index') !!}" + '?skin='+skin;--}}
-    {{--}--}}
-
     $('input[name=username]').val(username);
     $('input[name=identity]').val(identity);
     $('input[name=sign]').val(sign);

@@ -7,22 +7,22 @@
 
 @section('scripts')
 @parent
-{{ script('jquery.jscrollpane') }}
-{{ script('gagame.DatePicker') }}
+{!! script('jquery.jscrollpane') !!}
+{!! script('gagame.DatePicker') !!}
 @stop
 
 
 @section ('main')
 
 <!--导航栏-->
-@include('w.transaction-nav')
+@include('userCenter.transaction.nav')
 
 
 <div class="content">
-    @include('centerUser.user_profit._myself_search')
-    @include('centerUser.user_profit._myself_table')
+    @include('userCenter.user_profit._myself_search')
+    @include('userCenter.user_profit._myself_table')
 
-    {{ pagination($datas->appends(Input::except('page')), 'w.pages') }}
+    @include('pagination.default', ['paginator' => $datas])
 </div>
 @stop
 
