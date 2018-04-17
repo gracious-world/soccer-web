@@ -319,6 +319,7 @@ class UserBaseController extends Controller
      */
     public function __construct(Request $request)
     {
+//        DB::enableQueryLog();
 //        var_dump(__FILE__,__LINE__);exit;
         $this->request = $request;
         // $this->User = $this->getAuthenticatedUser();
@@ -1082,7 +1083,9 @@ class UserBaseController extends Controller
     {
         if (SysConfig::check('sys_use_sql_log', true)) {
             $sLogPath = Config::get('log.root') . DIRECTORY_SEPARATOR . 'sql' . DIRECTORY_SEPARATOR . date('Ymd');
+
 //            pr($sLogPath);
+//            exit;
             if (!file_exists($sLogPath)) {
                 @mkdir($sLogPath, 0777, true);
                 @chmod($sLogPath, 0777);
@@ -1092,7 +1095,7 @@ class UserBaseController extends Controller
                 return;
             }
 //            $me       = DB::connection();
-//            pr($queries);
+
             foreach ($queries as $aQueryInfo) {
 //                $sql       = $aQueryInfo['query'];
                 $sql = '';

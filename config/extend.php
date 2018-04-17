@@ -66,7 +66,7 @@ return array(
 
                  //组件
                 'base' => 'js-min/base.js' . $version,
-                  'gagame.base' => 'js-min/gagame.base.js' . $version,
+                'gagame.base' => 'js-min/gagame.base.js' . $version,
                 'gagame.Mask' => 'js-min/gagame.Mask.js' . $version,
                 'gagame.Tip' => 'js-min/gagame.Tip.js' . $version,
                 'gagame.Message' => 'js-min/gagame.Message.js' . $version,
