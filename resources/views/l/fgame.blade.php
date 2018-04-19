@@ -22,7 +22,7 @@
             {!! script('jquery') !!}
             {!! script('moment') !!}
             {!! script('uiScript') !!}
-            {{--{!! script('base') !!}--}}
+            {!! script('base') !!}
         @show
     </head>
     <body>

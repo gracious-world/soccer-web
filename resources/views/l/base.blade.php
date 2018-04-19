@@ -22,7 +22,7 @@
             {!! script('jquery') !!}
             {!! script('moment') !!}
             {!! script('gagame.base') !!}
-{{--            {!! script('base') !!}--}}
+            {!! script('base') !!}
         @show
     </head>
     <body>

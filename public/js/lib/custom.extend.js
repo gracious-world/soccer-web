@@ -72,12 +72,17 @@ var calculateBetsNum = function(gamesOddJson, gamesArr, gatesJson, danArr) {
 };
 var combine = function(arr, num) {
     var r = [];
-    (function f(t, a, n) {
-        if (n == 0) return r.push(t);
-        for (var i = 0, l = a.length; i <= l - n; i++) {
-            f(t.concat(a[i]), a.slice(i + 1), n - 1);
+    (function f(out, arr, num) {
+        if (num == 0) {
+            console.log(out);
+            return r.push(out);
+        }
+        for (var i = 0, l = arr.length; i <= l - num; i++) {
+            console.log(out);
+            f(out.concat(arr[i]), arr.slice(i + 1), num - 1);
         }
     })([], arr, num);
+    console.log(r);
     return r;
 };
 
