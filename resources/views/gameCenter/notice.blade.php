@@ -186,7 +186,7 @@
             };
         })();
 
-        controller.init();
+        // controller.init();
 
 
     });
