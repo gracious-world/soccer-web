@@ -19,9 +19,9 @@
         @show
         @section('scripts')
             {!! script('jquery') !!}
+            {!! script('doT') !!}
             {!! script('moment') !!}
             {!! script('uiScript') !!}
-            {!! script('doT') !!}
             {!! script('gagame.base') !!}
             {!! script('base') !!}
         @show

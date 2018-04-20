@@ -86,7 +86,7 @@ return array(
                 'gagame.Select' => 'js-min/gagame.Select.js' . $version,
 
                 //quick deposit
-                'jquery.jscrollpane' => 'imager/game/k3-dice/jquery.jscrollpane.css' . $version,
+//                'jquery.jscrollpane' => 'imager/game/k3-dice/jquery.jscrollpane.css' . $version,
                 'gagame.DatePicker' => 'js-min/gagame.DatePicker.js' . $version,
 
                 //login + register

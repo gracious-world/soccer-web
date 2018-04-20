@@ -76,16 +76,16 @@ $(function() {
     });*/
 
     // Tips
-    var tips = new gagame.Tip({cls: 'j-ui-tip-r w-3'});
-    $('[data-tips-top]').hover(function (e) {
-        var el = $(this),
-                text = el.data('tips-top');
-        tips.setText(text);
-        tips.show((tips.getDom().width()+30 )* -1, -8, el);
-        e.preventDefault();
-    }, function () {
-        tips.hide();
-    });
+    // var tips = new gagame.Tip({cls: 'j-ui-tip-r w-3'});
+    // $('[data-tips-top]').hover(function (e) {
+    //     var el = $(this),
+    //             text = el.data('tips-top');
+    //     tips.setText(text);
+    //     tips.show((tips.getDom().width()+30 )* -1, -8, el);
+    //     e.preventDefault();
+    // }, function () {
+    //     tips.hide();
+    // });
 
     // 余额显示隐藏
     var $balanceHandler = $('#balance-toggle, .balance-toggle');

@@ -1,6 +1,5 @@
 @extends('l.base')
 
-
 @section ('styles')
 @parent
     {!! style('ucenter') !!}
