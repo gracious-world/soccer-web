@@ -406,9 +406,10 @@ class UserProgramController extends UserBaseController {
         $sSaleStopAt = Carbon::today()->hour(24 + $iAllowBetHour)->subMinutes($iSaleStopBeforeMinutes)->toDateTimeString();
 
         // 所选第一场赛事不在可投注时间范围内
-        if (($iCurHour < 9 && $iCurHour >= $iAllowBetHour) || $oNow->toDateTimeString() > min($sSaleStopAt, $oGame->sale_stop_at)) {
+        if ((/*$iCurHour < 9 &&*/ $iCurHour >= $iAllowBetHour) || $oNow->toDateTimeString() > min($sSaleStopAt, $oGame->sale_stop_at)) {
             return false;
         }
+
         return true;
     }
 
