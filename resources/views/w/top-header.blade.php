@@ -192,8 +192,8 @@ $(function() {
             }
         });
     }
-    getSiteMsg();
-    setInterval(getSiteMsg, 5 * 60 * 1000);
+    // getSiteMsg();
+    // setInterval(getSiteMsg, 5 * 60 * 1000);
     function getSystemMsg(){
         var unreaded = 0,
             html = '';
@@ -231,8 +231,8 @@ $(function() {
             }
         });
     }
-    getSystemMsg();
-    setInterval(getSystemMsg, 5 * 60 * 1000);
+    // getSystemMsg();
+    // setInterval(getSystemMsg, 5 * 60 * 1000);
 });
 </script>
 @endif
