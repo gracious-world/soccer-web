@@ -57,6 +57,7 @@
         </div>
     </div>
 </div>
+{!! script('base') !!}
 <script>
 $(function() {
     function getIFrameDOM(id){
