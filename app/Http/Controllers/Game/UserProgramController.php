@@ -300,7 +300,9 @@ class UserProgramController extends UserBaseController {
         $sProgramSn = generateSerialNumber();
         $aProgramData = [
 //            'bp_id' => $this->Customer->id,
+            'bp_id' => 0,
 //            'bp_name' => $this->Customer->name,
+            'bp_name' => '',
             'sn' => $sProgramSn,
             'gt_id' => $iGameTypeId,
             'game_type' => $sGameType,

@@ -7,7 +7,7 @@
 
 @section('scripts')
 @parent
-{!! script('jquery.jscrollpane') !!}
+{{--{!! script('jquery.jscrollpane') !!}--}}
 {!! script('gagame.DatePicker') !!}
 @stop
 
