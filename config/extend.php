@@ -7,7 +7,7 @@
 |
 */
 //to fix cdn cache
-$version = '?' . '107';
+$version = '?' . '108';
 
 return array(
 
