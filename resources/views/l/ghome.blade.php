@@ -23,6 +23,7 @@
             {!! script('uiScript') !!}
             {!! script('doT') !!}
             {!! script('gagame.base') !!}
+            {!! script('base') !!}
         @show
     </head>
     <body>
