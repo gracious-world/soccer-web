@@ -70,10 +70,10 @@ $(function() {
         window.location.href = "{!! route('logout') !!}";
     });
     // 顶部用户菜单下拉
-    /*$('.top-nav-user, .top-nav-msg').overdropdown({
+    $('.top-nav-user, .top-nav-msg').overdropdown({
         activeClass: 'top-nav-toggle-active',
         handlerIsLink: true
-    });*/
+    });
 
     // Tips
     // var tips = new gagame.Tip({cls: 'j-ui-tip-r w-3'});
