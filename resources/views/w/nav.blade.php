@@ -19,7 +19,7 @@
 
             @endif
             <li class="right qq_kf">
-                <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3566073817&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:3566073817:52" alt="联系客服" title="联系客服"/>联系客服</a>
+                <a target="_blank" href=""><img border="0" src="" alt="联系客服" title="联系客服"/>联系客服</a>
             </li>
             @if (!Session::get('username'))
 
