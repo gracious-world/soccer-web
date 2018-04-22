@@ -17,6 +17,7 @@ require.config({
         uiScript: 'ui',
 
         //游戏类
+
         gameAll:'gameAll'
 
     },
@@ -36,7 +37,7 @@ require.config({
     buildVersion: '' //buildVersion
 });
 
-require(['domReady', 'gameAll'], function($, domReady) {
+require(['jquery', 'domReady', 'gameAll'], function($, domReady) {
     domReady(function() {
         Mango.Data.init({
             gameConfigUrl: gameConfigUrl,
