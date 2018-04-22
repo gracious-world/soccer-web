@@ -38,27 +38,30 @@ require.config({
 });
 
 require(['jquery', 'domReady', 'gameAll'], function($, domReady) {
-    domReady(function() {
-        Mango.Data.init({
-            gameConfigUrl: gameConfigUrl,
-            gameDataUrl: gameDataUrl,
-            gamesContainer: Mango.Config.containers.games,
-            isFocusGame: isFocusGame,
-            callback: function (container, data, tmpl, needClear, prependDom) {
-                Mango.Render.render(container.find('.gamesList'), data, Mango.Config.scriptTmpl[tmpl], needClear, prependDom);
-                //渲染已经选择过的投注
-                $('.gameOption a').each(function(index,el){
-                    var selector = $(el).attr('index');
-                    $('.gamesList em[index="'+selector+'"],.gamesList td[index="'+selector+'"]').addClass('active');
-                });
-            }
+    var t=function() {
+        domReady(function () {
+            Mango.Data.init({
+                gameConfigUrl: gameConfigUrl,
+                gameDataUrl: gameDataUrl,
+                gamesContainer: Mango.Config.containers.games,
+                isFocusGame: isFocusGame,
+                callback: function (container, data, tmpl, needClear, prependDom) {
+                    Mango.Render.render(container.find('.gamesList'), data, Mango.Config.scriptTmpl[tmpl], needClear, prependDom);
+                    //渲染已经选择过的投注
+                    $('.gameOption a').each(function (index, el) {
+                        var selector = $(el).attr('index');
+                        $('.gamesList em[index="' + selector + '"],.gamesList td[index="' + selector + '"]').addClass('active');
+                    });
+                }
+            });
+            Mango.Game.init({
+                billSubmitUrl: bettingUrl,
+                gamesFilter: Mango.Config.containers.gamesFilter,
+                gamesContainer: Mango.Config.containers.games,
+                submitContainer: Mango.Config.containers.betting
+            });
         });
-        Mango.Game.init({
-            billSubmitUrl: bettingUrl,
-            gamesFilter: Mango.Config.containers.gamesFilter,
-            gamesContainer: Mango.Config.containers.games,
-            submitContainer: Mango.Config.containers.betting
-        });
-    });
+    }
+    var r=setTimeout(t,1000);
 });
 
