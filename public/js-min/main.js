@@ -2,7 +2,7 @@
 require.config({
     paths: {
         // 插件库
-        jquery: 'jquery-1.9.1.min',
+        // jquery: 'jquery-1.9.1.min',
         jqueryMousewheel: 'jquery.mousewheel.min',
         jqueryJscroll: 'jquery.jscroll',
         jqueryJscrollpane: 'jquery.jscrollpane',
@@ -37,7 +37,7 @@ require.config({
     buildVersion: '' //buildVersion
 });
 
-require(['jquery', 'domReady', 'gameAll'], function($, domReady) {
+require(['domReady', 'gameAll'], function($, domReady) {
     domReady(function() {
         Mango.Data.init({
             gameConfigUrl: gameConfigUrl,

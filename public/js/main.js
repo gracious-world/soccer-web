@@ -47,6 +47,7 @@ require(['jquery', 'domReady', 'mgGame'], function($, domReady) {
             gamesContainer: Mango.Config.containers.games,
             isFocusGame: isFocusGame,
             callback: function (container, data, tmpl, needClear, prependDom) {
+                //TODO improve
                 Mango.Render.render(container.find('.gamesList'), data, Mango.Config.scriptTmpl[tmpl], needClear, prependDom);
                 //渲染已经选择过的投注
                 $('.gameOption a').each(function(index,el){
