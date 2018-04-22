@@ -2,7 +2,7 @@
 require.config({
     paths: {
         // 插件库
-        // jquery: 'jquery-1.9.1.min',
+        jquery: 'jquery-1.9.1.min',
         jqueryMousewheel: 'jquery.mousewheel.min',
         jqueryJscroll: 'jquery.jscroll',
         jqueryJscrollpane: 'jquery.jscrollpane',
@@ -17,7 +17,6 @@ require.config({
         uiScript: 'ui',
 
         //游戏类
-
         gameAll:'gameAll'
 
     },
