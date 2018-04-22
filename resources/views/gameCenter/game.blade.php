@@ -48,7 +48,6 @@
     <!-- <script type="text/javascript" src="../data/game.json"></script> -->
     <script type="text/javascript" src="../../js-min/doT.js"></script>
     <!--  <script data-main="../../js/main" src="../../js-min/requirejs.min.js"></script> -->
-    <script data-main="../../js-min/main" src="../../js-min/requirejs.min.js"></script>
 
 
 @stop
@@ -268,6 +267,8 @@
 
     </div>
 @stop
+
+
 
 
 

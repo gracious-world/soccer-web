@@ -122,6 +122,8 @@
         });
 
     </script>
+
+    <script data-main="../../js-min/main" src="../../js-min/requirejs.min.js"></script>
         @include('w.footer')
     @show
 </html>

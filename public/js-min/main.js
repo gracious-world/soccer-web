@@ -38,7 +38,6 @@ require.config({
 });
 
 require(['jquery', 'domReady', 'gameAll'], function($, domReady) {
-    var t=function() {
         domReady(function () {
             Mango.Data.init({
                 gameConfigUrl: gameConfigUrl,
@@ -61,7 +60,5 @@ require(['jquery', 'domReady', 'gameAll'], function($, domReady) {
                 submitContainer: Mango.Config.containers.betting
             });
         });
-    }
-    var r=setTimeout(t,1000);
 });
 
